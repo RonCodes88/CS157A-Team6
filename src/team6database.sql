@@ -27,8 +27,8 @@ CREATE TABLE `createcustomactivities` (
   `TripID` int DEFAULT NULL,
   KEY `FK_ActivityID_idx` (`ActivityID`),
   KEY `FK_Create_TripID_idx` (`TripID`),
-  CONSTRAINT `FK_ActivityID` FOREIGN KEY (`ActivityID`) REFERENCES `customactivities` (`ActivityID`) ON DELETE CASCADE ON UPDATE CASCADE,
-  CONSTRAINT `FK_Create_TripID` FOREIGN KEY (`TripID`) REFERENCES `trips` (`TripID`) ON DELETE CASCADE ON UPDATE CASCADE
+  CONSTRAINT `FK_CustomActivities_ActivityID` FOREIGN KEY (`ActivityID`) REFERENCES `customactivities` (`ActivityID`) ON DELETE CASCADE ON UPDATE CASCADE,
+  CONSTRAINT `FK_CustomActivities_TripID` FOREIGN KEY (`TripID`) REFERENCES `trips` (`TripID`) ON DELETE CASCADE ON UPDATE CASCADE
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
@@ -38,7 +38,7 @@ CREATE TABLE `createcustomactivities` (
 
 LOCK TABLES `createcustomactivities` WRITE;
 /*!40000 ALTER TABLE `createcustomactivities` DISABLE KEYS */;
-INSERT INTO `createcustomactivities` VALUES (1,1),(2,1),(3,2),(4,2),(5,3),(6,3),(7,4),(8,4),(9,5),(10,5);
+INSERT INTO `createcustomactivities` VALUES (1001,1015),(2047,2489),(3058,3271),(4123,4568),(5632,5894),(6789,6732),(7405,7851),(8504,8523),(9176,9134),(1034,1027);
 /*!40000 ALTER TABLE `createcustomactivities` ENABLE KEYS */;
 UNLOCK TABLES;
 
@@ -50,12 +50,12 @@ DROP TABLE IF EXISTS `customactivities`;
 /*!40101 SET @saved_cs_client     = @@character_set_client */;
 /*!50503 SET character_set_client = utf8mb4 */;
 CREATE TABLE `customactivities` (
-  `ActivityID` int NOT NULL AUTO_INCREMENT,
+  `ActivityID` int NOT NULL,
   `ActivityName` varchar(45) DEFAULT NULL,
   `ActivityDesc` varchar(500) DEFAULT NULL,
   `Price` varchar(45) DEFAULT NULL,
   PRIMARY KEY (`ActivityID`)
-) ENGINE=InnoDB AUTO_INCREMENT=11 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -64,7 +64,7 @@ CREATE TABLE `customactivities` (
 
 LOCK TABLES `customactivities` WRITE;
 /*!40000 ALTER TABLE `customactivities` DISABLE KEYS */;
-INSERT INTO `customactivities` VALUES (1,'City Tour','A guided tour of the city\'s historical sites.','29.99'),(2,'Cooking Class','Learn to cook local cuisine with a chef.','49.99'),(3,'Wine Tasting','Enjoy a tasting of local wines.','39.50'),(4,'Adventure Hiking','A day of hiking in the beautiful countryside.','59.00'),(5,'Museum Visit','Explore the local art and history museum.','15.00'),(6,'Scuba Diving','Experience underwater diving in beautiful locations.','120.00'),(7,'Bike Rental','Rent a bike for a day of exploration.','20.00'),(8,'Surfing Lessons','Take lessons from a professional surf instructor.','75.00'),(9,'Spa Day','Relax with a full day of spa treatments.','150.00'),(10,'Concert Tickets','Enjoy a night of music at a local concert.','45.00');
+INSERT INTO `customactivities` VALUES (1001,'Skydiving','Experience the thrill of free-fall from 15,000 feet!','250.00'),(1034,'Photography Tour','Capture stunning landscapes with expert photography tips.','90.00'),(2047,'Cooking Class','Learn to make authentic Italian pasta from scratch.','75.00'),(3058,'City Tour','Explore the historical sites of the city with a local guide.','50.00'),(4123,'Mountain Biking','Ride through scenic trails and enjoy the great outdoors.','100.00'),(5632,'Wine Tasting','Taste a selection of local wines at a beautiful vineyard.','45.00'),(6789,'Scuba Diving','Discover the underwater world with a certified instructor.','300.00'),(7405,'Yoga Retreat','Relax and rejuvenate with daily yoga sessions and meditation.','200.00'),(8504,'Art Workshop','Create your own masterpiece in a guided painting class.','60.00'),(9176,'Zip Lining','Soar through the trees on a thrilling zip line adventure.','120.00');
 /*!40000 ALTER TABLE `customactivities` ENABLE KEYS */;
 UNLOCK TABLES;
 
@@ -76,14 +76,14 @@ DROP TABLE IF EXISTS `flights`;
 /*!40101 SET @saved_cs_client     = @@character_set_client */;
 /*!50503 SET character_set_client = utf8mb4 */;
 CREATE TABLE `flights` (
-  `FlightID` int NOT NULL AUTO_INCREMENT,
+  `FlightID` int NOT NULL,
   `FlightClass` varchar(45) DEFAULT NULL,
   `Airline` varchar(45) DEFAULT NULL,
   `Price` varchar(45) DEFAULT NULL,
   `DepartureDate` date DEFAULT NULL,
   `ReturnDate` date DEFAULT NULL,
   PRIMARY KEY (`FlightID`)
-) ENGINE=InnoDB AUTO_INCREMENT=11 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -92,35 +92,35 @@ CREATE TABLE `flights` (
 
 LOCK TABLES `flights` WRITE;
 /*!40000 ALTER TABLE `flights` DISABLE KEYS */;
-INSERT INTO `flights` VALUES (1,'Economy','Delta','300','2024-10-10','2024-10-17'),(2,'Business','American Airlines','1200','2024-11-01','2024-11-10'),(3,'First Class','United','2500','2024-12-05','2024-12-12'),(4,'Economy','Southwest','150','2024-09-20','2024-09-25'),(5,'Economy','JetBlue','200','2024-11-15','2024-11-22'),(6,'Business','Emirates','2200','2024-10-05','2024-10-15'),(7,'First Class','Qatar Airways','3000','2024-12-20','2024-12-30'),(8,'Economy','Spirit Airlines','100','2024-11-10','2024-11-15'),(9,'Business','Lufthansa','1800','2024-11-25','2024-12-01'),(10,'Economy','Alaska Airlines','250','2024-10-22','2024-10-28');
+INSERT INTO `flights` VALUES (1078,'Business','Allegiant Air','650.00','2024-11-25','2024-11-25'),(2015,'Economy','Delta Airlines','350.00','2024-10-15','2024-10-15'),(2490,'Economy','Hawaiian Airlines','400.00','2024-11-30','2024-11-30'),(3489,'Business','American Airlines','850.00','2024-10-20','2024-10-20'),(4312,'First Class','United Airlines','1200.00','2024-10-25','2024-10-25'),(5198,'Economy','Southwest Airlines','250.00','2024-10-30','2024-10-30'),(6074,'Business','JetBlue','700.00','2024-11-05','2024-11-05'),(7201,'Economy','Alaska Airlines','300.00','2024-11-10','2024-11-10'),(8123,'First Class','Frontier Airlines','1500.00','2024-11-15','2024-11-15'),(9342,'Economy','Spirit Airlines','200.00','2024-11-20','2024-11-20');
 /*!40000 ALTER TABLE `flights` ENABLE KEYS */;
 UNLOCK TABLES;
 
 --
--- Table structure for table `hotel`
+-- Table structure for table `hotels`
 --
 
-DROP TABLE IF EXISTS `hotel`;
+DROP TABLE IF EXISTS `hotels`;
 /*!40101 SET @saved_cs_client     = @@character_set_client */;
 /*!50503 SET character_set_client = utf8mb4 */;
-CREATE TABLE `hotel` (
-  `HotelID` int NOT NULL AUTO_INCREMENT,
+CREATE TABLE `hotels` (
+  `HotelID` int NOT NULL,
   `HotelName` varchar(45) DEFAULT NULL,
   `CheckinDate` date DEFAULT NULL,
   `CheckoutDate` date DEFAULT NULL,
   `Price` varchar(45) DEFAULT NULL,
   PRIMARY KEY (`HotelID`)
-) ENGINE=InnoDB AUTO_INCREMENT=11 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
--- Dumping data for table `hotel`
+-- Dumping data for table `hotels`
 --
 
-LOCK TABLES `hotel` WRITE;
-/*!40000 ALTER TABLE `hotel` DISABLE KEYS */;
-INSERT INTO `hotel` VALUES (1,'Marriott','2024-10-01','2024-10-05','500'),(2,'Hilton','2024-11-10','2024-11-15','600'),(3,'Hyatt','2024-12-20','2024-12-27','1200'),(4,'Holiday Inn','2024-09-15','2024-09-18','300'),(5,'Sheraton','2024-10-05','2024-10-10','700'),(6,'Four Seasons','2024-11-25','2024-12-01','2500'),(7,'Ritz-Carlton','2024-12-15','2024-12-20','3000'),(8,'Best Western','2024-09-20','2024-09-23','400'),(9,'Radisson','2024-10-15','2024-10-20','800'),(10,'Wyndham','2024-11-01','2024-11-07','900');
-/*!40000 ALTER TABLE `hotel` ENABLE KEYS */;
+LOCK TABLES `hotels` WRITE;
+/*!40000 ALTER TABLE `hotels` DISABLE KEYS */;
+INSERT INTO `hotels` VALUES (1006,'Desert Oasis','2024-12-10','2024-12-15','130.00'),(1034,'Ocean View Resort','2024-10-01','2024-10-07','120.00'),(2198,'Mountain Retreat','2024-10-10','2024-10-15','150.00'),(3210,'City Center Hotel','2024-10-12','2024-10-19','200.00'),(4876,'Countryside Inn','2024-10-20','2024-10-25','90.00'),(5983,'Lakeside Cabins','2024-11-01','2024-11-05','110.00'),(6745,'Luxury Suites','2024-11-10','2024-11-15','250.00'),(7320,'Budget Stay','2024-11-18','2024-11-20','65.00'),(8493,'Historic Hotel','2024-11-25','2024-11-30','175.00'),(9142,'Beachfront Hotel','2024-12-01','2024-12-05','220.00');
+/*!40000 ALTER TABLE `hotels` ENABLE KEYS */;
 UNLOCK TABLES;
 
 --
@@ -145,7 +145,7 @@ CREATE TABLE `suggestedactivities` (
 
 LOCK TABLES `suggestedactivities` WRITE;
 /*!40000 ALTER TABLE `suggestedactivities` DISABLE KEYS */;
-INSERT INTO `suggestedactivities` VALUES ('Arizona','Grand Canyon Tour','Visit one of the natural wonders of the world.','70.00'),('California','Beach Bonfire','Enjoy a fun bonfire on the beach.','35.00'),('Colorado','Mountain Hiking','Explore beautiful mountain trails.','40.00'),('Florida','Theme Park Visit','Spend a day at a famous theme park.','99.99'),('Hawaii','Luau Experience','Enjoy traditional Hawaiian food and entertainment.','85.00'),('Illinois','City River Cruise','Take a scenic cruise on the Chicago River.','25.00'),('Nevada','Casino Night','Try your luck at the famous casinos.','50.00'),('New York','Broadway Show','Watch a live performance in Times Square.','120.00'),('Texas','Barbecue Tour','Experience a tour of local barbecue joints.','45.00'),('Washington','National Park Visit','Discover the beauty of the national parks.','30.00');
+INSERT INTO `suggestedactivities` VALUES ('Alaska','Glacier Cruise','Witness breathtaking glaciers and wildlife on a boat tour.','200.00'),('Arizona','Grand Canyon Hiking','Explore the stunning landscapes of the Grand Canyon.','40.00'),('California','Surfing Lessons','Learn to ride the waves with professional instructors.','100.00'),('Florida','Everglades Airboat Tour','Explore the unique ecosystem of the Everglades.','70.00'),('Hawaii','Snorkeling Adventure','Discover vibrant marine life in beautiful coral reefs.','120.00'),('Nevada','Las Vegas Strip Tour','Experience the excitement of the Las Vegas Strip.','60.00'),('New York','Broadway Show','Enjoy a spectacular performance in the heart of NYC.','150.00'),('North Carolina','Great Smoky Mountains National Park','Hike the scenic trails of America’s most visited national park.','30.00'),('Oregon','Wine Tasting Tour','Visit some of Oregon’s finest vineyards for wine tastings.','90.00'),('Texas','Barbecue Cooking Class','Master the art of Texas-style barbecue cooking.','80.00');
 /*!40000 ALTER TABLE `suggestedactivities` ENABLE KEYS */;
 UNLOCK TABLES;
 
@@ -157,14 +157,14 @@ DROP TABLE IF EXISTS `trips`;
 /*!40101 SET @saved_cs_client     = @@character_set_client */;
 /*!50503 SET character_set_client = utf8mb4 */;
 CREATE TABLE `trips` (
-  `TripID` int NOT NULL AUTO_INCREMENT,
+  `TripID` int NOT NULL,
   `StartLocation` varchar(45) DEFAULT NULL,
   `Destination` varchar(45) DEFAULT NULL,
   `Duration` int DEFAULT NULL,
   `Budget` int DEFAULT NULL,
   `Travelers` int DEFAULT NULL,
   PRIMARY KEY (`TripID`)
-) ENGINE=InnoDB AUTO_INCREMENT=15 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -173,7 +173,7 @@ CREATE TABLE `trips` (
 
 LOCK TABLES `trips` WRITE;
 /*!40000 ALTER TABLE `trips` DISABLE KEYS */;
-INSERT INTO `trips` VALUES (1,'San Francisco','Los Angeles',5,700,2),(2,'New York','Miami',7,1200,4),(3,'Chicago','Las Vegas',6,1500,3),(4,'Seattle','Vancouver',3,500,2),(5,'Austin','Houston',2,300,1),(6,'Boston','Philadelphia',4,400,2),(7,'Orlando','New Orleans',5,800,5),(8,'Denver','Salt Lake City',4,600,3),(9,'Phoenix','San Diego',3,450,2),(10,'Atlanta','Nashville',2,350,1),(14,'Denver','Salt Lake City',4,600,3);
+INSERT INTO `trips` VALUES (1015,'New York','Los Angeles',7,1200,3),(1027,'Denver','Salt Lake City',5,950,2),(2489,'Chicago','Miami',5,800,2),(3271,'San Francisco','Seattle',4,600,1),(4568,'Houston','New Orleans',3,500,4),(5894,'Phoenix','Las Vegas',2,300,2),(6732,'Boston','Washington D.C.',6,900,2),(7851,'Dallas','Austin',3,400,1),(8523,'Philadelphia','Orlando',8,1100,5),(9134,'Atlanta','Savannah',4,700,3);
 /*!40000 ALTER TABLE `trips` ENABLE KEYS */;
 UNLOCK TABLES;
 
@@ -189,8 +189,8 @@ CREATE TABLE `tripselectflights` (
   `FlightID` int DEFAULT NULL,
   KEY `FK_TripID_idx` (`TripID`),
   KEY `FK_FlightID_idx` (`FlightID`),
-  CONSTRAINT `FK_FlightID` FOREIGN KEY (`FlightID`) REFERENCES `flights` (`FlightID`) ON DELETE CASCADE ON UPDATE CASCADE,
-  CONSTRAINT `FK_TripID` FOREIGN KEY (`TripID`) REFERENCES `trips` (`TripID`) ON DELETE CASCADE ON UPDATE CASCADE
+  CONSTRAINT `FK_SelectFlights_FlightID` FOREIGN KEY (`FlightID`) REFERENCES `flights` (`FlightID`) ON DELETE CASCADE ON UPDATE CASCADE,
+  CONSTRAINT `FK_SelectFlights_TripID` FOREIGN KEY (`TripID`) REFERENCES `trips` (`TripID`) ON DELETE CASCADE ON UPDATE CASCADE
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
@@ -200,7 +200,7 @@ CREATE TABLE `tripselectflights` (
 
 LOCK TABLES `tripselectflights` WRITE;
 /*!40000 ALTER TABLE `tripselectflights` DISABLE KEYS */;
-INSERT INTO `tripselectflights` VALUES (1,1),(2,2),(3,3),(4,4),(5,5),(6,6),(7,7),(8,8),(9,9),(10,10);
+INSERT INTO `tripselectflights` VALUES (1015,2015),(2489,3489),(3271,4312),(4568,5198),(5894,6074),(6732,7201),(7851,8123),(8523,9342),(9134,1078),(1027,2490);
 /*!40000 ALTER TABLE `tripselectflights` ENABLE KEYS */;
 UNLOCK TABLES;
 
@@ -216,8 +216,8 @@ CREATE TABLE `tripselecthotels` (
   `HotelID` int DEFAULT NULL,
   KEY `FK_TripID_idx` (`TripID`),
   KEY `FK_HotelID_idx` (`HotelID`),
-  CONSTRAINT `FK_HotelID` FOREIGN KEY (`HotelID`) REFERENCES `hotel` (`HotelID`) ON DELETE CASCADE ON UPDATE CASCADE,
-  CONSTRAINT `FK_Select_TripID` FOREIGN KEY (`TripID`) REFERENCES `trips` (`TripID`) ON DELETE CASCADE ON UPDATE CASCADE
+  CONSTRAINT `FK_SelectHotels_HotelID` FOREIGN KEY (`HotelID`) REFERENCES `hotels` (`HotelID`) ON DELETE CASCADE ON UPDATE CASCADE,
+  CONSTRAINT `FK_SelectHotels_TripID` FOREIGN KEY (`TripID`) REFERENCES `trips` (`TripID`) ON DELETE CASCADE ON UPDATE CASCADE
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
@@ -227,7 +227,7 @@ CREATE TABLE `tripselecthotels` (
 
 LOCK TABLES `tripselecthotels` WRITE;
 /*!40000 ALTER TABLE `tripselecthotels` DISABLE KEYS */;
-INSERT INTO `tripselecthotels` VALUES (1,1),(1,2),(2,3),(2,4),(3,5),(3,6),(4,7),(4,8),(5,9),(5,10);
+INSERT INTO `tripselecthotels` VALUES (1015,1034),(2489,2198),(3271,3210),(4568,4876),(5894,5983),(6732,6745),(7851,7320),(8523,8493),(9134,9142),(1027,1006);
 /*!40000 ALTER TABLE `tripselecthotels` ENABLE KEYS */;
 UNLOCK TABLES;
 
@@ -243,8 +243,8 @@ CREATE TABLE `tripselectsuggestedactivities` (
   `StateName` varchar(45) DEFAULT NULL,
   KEY `FK_Suggested_TripID_idx` (`TripID`),
   KEY `FK_StateName_idx` (`StateName`),
-  CONSTRAINT `FK_StateName` FOREIGN KEY (`StateName`) REFERENCES `suggestedactivities` (`StateName`) ON DELETE CASCADE ON UPDATE CASCADE,
-  CONSTRAINT `FK_Suggested_TripID` FOREIGN KEY (`TripID`) REFERENCES `trips` (`TripID`) ON DELETE CASCADE ON UPDATE CASCADE
+  CONSTRAINT `FK_SuggestedActivities_StateName` FOREIGN KEY (`StateName`) REFERENCES `suggestedactivities` (`StateName`) ON DELETE CASCADE ON UPDATE CASCADE,
+  CONSTRAINT `FK_SuggestedActivities_TripID` FOREIGN KEY (`TripID`) REFERENCES `trips` (`TripID`) ON DELETE CASCADE ON UPDATE CASCADE
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
@@ -254,7 +254,7 @@ CREATE TABLE `tripselectsuggestedactivities` (
 
 LOCK TABLES `tripselectsuggestedactivities` WRITE;
 /*!40000 ALTER TABLE `tripselectsuggestedactivities` DISABLE KEYS */;
-INSERT INTO `tripselectsuggestedactivities` VALUES (1,'Arizona'),(2,'California'),(3,'Colorado'),(4,'Florida'),(5,'Hawaii'),(6,'Illinois'),(7,'Nevada'),(8,'New York'),(9,'Texas'),(10,'Washington');
+INSERT INTO `tripselectsuggestedactivities` VALUES (1015,'New York'),(2489,'Florida'),(3271,'California'),(4568,'Texas'),(5894,'Nevada'),(6732,'Arizona'),(7851,'Hawaii'),(8523,'Oregon'),(9134,'North Carolina'),(1027,'Alaska');
 /*!40000 ALTER TABLE `tripselectsuggestedactivities` ENABLE KEYS */;
 UNLOCK TABLES;
 
@@ -269,8 +269,8 @@ CREATE TABLE `userpreferences` (
   `UserID` int DEFAULT NULL,
   `Language` varchar(45) DEFAULT NULL,
   `Currency` varchar(45) DEFAULT NULL,
-  KEY `UserID_idx` (`UserID`),
-  CONSTRAINT `UserID` FOREIGN KEY (`UserID`) REFERENCES `users` (`UserID`) ON DELETE CASCADE ON UPDATE CASCADE
+  KEY `FK_Preferences_UserID_idx` (`UserID`),
+  CONSTRAINT `FK_Preferences_UserID` FOREIGN KEY (`UserID`) REFERENCES `users` (`UserID`) ON DELETE CASCADE ON UPDATE CASCADE
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
@@ -280,7 +280,7 @@ CREATE TABLE `userpreferences` (
 
 LOCK TABLES `userpreferences` WRITE;
 /*!40000 ALTER TABLE `userpreferences` DISABLE KEYS */;
-INSERT INTO `userpreferences` VALUES (1,'English','USD'),(2,'Spanish','EUR'),(3,'French','CAD'),(4,'German','AUD'),(5,'Chinese','CNY'),(6,'Japanese','JPY'),(7,'Russian','RUB'),(8,'Italian','CHF'),(9,'Portuguese','BRL'),(10,'Korean','KRW');
+INSERT INTO `userpreferences` VALUES (1023,'English','USD'),(5589,'Spanish','EUR'),(7812,'French','CAD'),(3621,'German','AUD'),(4859,'Chinese','CNY'),(6498,'Japanese','JPY'),(2934,'Russian','RUB'),(8751,'Italian','CHF'),(1005,'Korean','NZD'),(9174,'Portuguese','BRL');
 /*!40000 ALTER TABLE `userpreferences` ENABLE KEYS */;
 UNLOCK TABLES;
 
@@ -292,12 +292,12 @@ DROP TABLE IF EXISTS `users`;
 /*!40101 SET @saved_cs_client     = @@character_set_client */;
 /*!50503 SET character_set_client = utf8mb4 */;
 CREATE TABLE `users` (
-  `UserID` int NOT NULL AUTO_INCREMENT,
+  `UserID` int NOT NULL,
   `Email` varchar(45) DEFAULT NULL,
   `Password` varchar(45) DEFAULT NULL,
   `RoleName` varchar(45) DEFAULT NULL,
   PRIMARY KEY (`UserID`)
-) ENGINE=InnoDB AUTO_INCREMENT=11 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -306,7 +306,7 @@ CREATE TABLE `users` (
 
 LOCK TABLES `users` WRITE;
 /*!40000 ALTER TABLE `users` DISABLE KEYS */;
-INSERT INTO `users` VALUES (1,'user1@example.com','password1','regular user'),(2,'user2@example.com','password2','regular user'),(3,'user3@example.com','password3','admin'),(4,'user4@example.com','password4','regular user'),(5,'user5@example.com','password5','regular user'),(6,'user6@example.com','password6','admin'),(7,'user7@example.com','password7','regular user'),(8,'user8@example.com','password8','regular user'),(9,'user9@example.com','password9','admin'),(10,'user10@example.com','password10','regular user');
+INSERT INTO `users` VALUES (1005,'ivan@example.com','password9','admin'),(1023,'alice@example.com','password1','admin'),(2934,'grace@example.com','password7','regular user'),(3621,'dave@example.com','password4','admin'),(4859,'eve@example.com','password5','regular user'),(5589,'bob@example.com','password2','regular user'),(6498,'frank@example.com','password6','regular user'),(7812,'charlie@example.com','password3','regular user'),(8751,'heidi@example.com','password8','regular user'),(9174,'judy@example.com','password10','regular user');
 /*!40000 ALTER TABLE `users` ENABLE KEYS */;
 UNLOCK TABLES;
 
@@ -333,7 +333,7 @@ CREATE TABLE `usertrips` (
 
 LOCK TABLES `usertrips` WRITE;
 /*!40000 ALTER TABLE `usertrips` DISABLE KEYS */;
-INSERT INTO `usertrips` VALUES (1,1),(2,2),(3,3),(4,4),(5,5),(6,6);
+INSERT INTO `usertrips` VALUES (1023,1015),(1023,2489),(5589,3271),(7812,4568),(3621,5894),(4859,6732),(6498,7851),(2934,8523),(8751,9134),(1005,1027);
 /*!40000 ALTER TABLE `usertrips` ENABLE KEYS */;
 UNLOCK TABLES;
 /*!40103 SET TIME_ZONE=@OLD_TIME_ZONE */;
@@ -346,4 +346,4 @@ UNLOCK TABLES;
 /*!40101 SET COLLATION_CONNECTION=@OLD_COLLATION_CONNECTION */;
 /*!40111 SET SQL_NOTES=@OLD_SQL_NOTES */;
 
--- Dump completed on 2024-09-28 22:15:01
+-- Dump completed on 2024-09-29 22:44:06
