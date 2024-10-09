@@ -16,6 +16,8 @@ public class RegisterDao {
 			e.printStackTrace();
 		}
 	}
+	
+	// Gets connection of database -- test comment from David
 	public Connection getConnection() {
 		Connection con = null;
 		try {
