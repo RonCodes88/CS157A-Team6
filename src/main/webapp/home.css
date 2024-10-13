@@ -1,0 +1,52 @@
+body {
+    background-color: #A0B1E1;
+    font-family: "all-round-gothic", sans-serif;
+	font-weight: 400;
+	font-style: normal;
+    margin: 0;
+    height: 100vh;
+    display: flex;
+    position: relative; 
+}
+
+.h2.text-heading-default{
+   font-family: "all-round-gothic", sans-serif;
+	font-weight: 400;
+	font-style: normal;
+}
+
+.left-image {
+    position: absolute;
+    top: 50px;
+    left: 80px; 
+    bottom: 0; 
+    height: auto;
+    max-height: 100%; 
+}
+
+.button-container {
+    position: absolute; 
+    right: 150px; 
+    bottom: 320px;
+    width: 300px;
+    display: flex;
+    flex-direction: column; 
+    align-items: center;
+}
+
+a {
+    display: block;
+    text-align: center;
+    margin: 10px 0;
+    text-decoration: none;
+    padding: 10px 20px;
+    background-color: #517D77;
+    color: white;
+    border-radius: 20px;
+    width: 80%;
+    font-family: "all-round-gothic", sans-serif; 
+}
+
+a:hover {
+    background-color: #0056b3;
+}
