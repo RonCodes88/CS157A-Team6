@@ -32,7 +32,7 @@
   font-family: "Roboto", sans-serif;
   text-transform: uppercase;
   outline: 0;
-  background: #4CAF50;
+  background: #2196F3; /* Changed to blue */
   width: 100%;
   border: 0;
   padding: 15px;
@@ -43,7 +43,7 @@
   cursor: pointer;
 }
 .form button:hover,.form button:active,.form button:focus {
-  background: #43A047;
+  background: #1E88E5; /* Changed to blue */
 }
 .form .message {
   margin: 15px 0 0;
@@ -51,7 +51,7 @@
   font-size: 12px;
 }
 .form .message a {
-  color: #4CAF50;
+  color: #2196F3; /* Changed to blue */
   text-decoration: none;
 }
 .form .register-form {
@@ -91,9 +91,9 @@
   color: #EF3B3A;
 }
 body {
-  background: #76b852; /* fallback for old browsers */
-  background: rgb(141,194,111);
-  background: linear-gradient(90deg, rgba(141,194,111,1) 0%, rgba(118,184,82,1) 50%);
+  background: #2196F3; /* Changed to blue */
+  background: rgb(33,150,243); /* Changed to blue */
+  background: linear-gradient(90deg, rgba(33,150,243,1) 0%, rgba(30,136,229,1) 50%); /* Changed to blue */
   font-family: "Roboto", sans-serif;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;      

@@ -4,34 +4,15 @@ import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 public class UserDao {
-	private String dburl = "jdbc:mysql://localhost:3306/team6";
-	private String dbuname = "root";
-	private String dbpassword = "Turtle$$678:)";
-	private String dbdriver = "com.mysql.jdbc.Driver";
-	public void loadDriver(String dbDriver)
-	{
-		try {
-			Class.forName(dbDriver);
-		} catch (ClassNotFoundException e) {
-			// TODO Auto-generated catch block
-			e.printStackTrace();
-		}
-	}
+	private ConnectionManager connectionManager;
 	
-	public Connection getConnection() {
-		Connection con = null;
-		try {
-			con = DriverManager.getConnection(dburl, dbuname, dbpassword);
-		} catch (SQLException e) {
-			// TODO Auto-generated catch block
-			e.printStackTrace();
-		}
-		return con;
+	public UserDao() {
+		connectionManager = new ConnectionManager();
 	}
 	
 	public String register(User user) {
-	    loadDriver(dbdriver);
-	    Connection con = getConnection();
+		connectionManager.loadDriver();
+	    Connection con = connectionManager.getConnection();
 	    String result = "User Registered Successfully";
 	    
 	    try {
@@ -76,10 +57,11 @@ public class UserDao {
 	   return result;
 	}
 	
-	public boolean validateUser(String email, String password) {
-		loadDriver(dbdriver); 
-		boolean isValidUser = false;
-		 Connection con = getConnection();
+	public boolean validateUser(String email, String password) { 
+		connectionManager.loadDriver();
+	    Connection con = connectionManager.getConnection();
+	    
+	    boolean isValidUser = false;
 		 
 		 try {
 			 String validateUserSql = "SELECT Password FROM Users WHERE Email = ?";
@@ -110,7 +92,7 @@ public class UserDao {
 		   }
 
 		 return isValidUser;
-		
+	
 	}
 	
 
