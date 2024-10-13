@@ -2,14 +2,10 @@ import java.sql.Connection;
 import java.sql.DriverManager;
 import java.sql.SQLException;
 
-/*
- * Utility class to manage connections
- */
-
 public class ConnectionManager {
-    private String dbUrl = "jdbc:mysql://localhost:3306/team6";
+	private String dbUrl = "jdbc:mysql://localhost:3306/team6";
     private String dbUsername = "root";
-    private String dbPassword = "bleak123."; // It's bleak.
+    private String dbPassword = "Turtle$$678:)";
     private String dbDriver = "com.mysql.jdbc.Driver";
 
     // Load the database driver
@@ -31,8 +27,8 @@ public class ConnectionManager {
         }
         return con;
     }
-
+    
     public String getdbdriver() {
-        return dbDriver;
+    	return dbDriver;
     }
 }
