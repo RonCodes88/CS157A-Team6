@@ -2,10 +2,14 @@ import java.sql.Connection;
 import java.sql.DriverManager;
 import java.sql.SQLException;
 
+/*
+ * Utility class to manage connections
+ */
+
 public class ConnectionManager {
     private String dbUrl = "jdbc:mysql://localhost:3306/team6";
     private String dbUsername = "root";
-    private String dbPassword = "ghostslayer5564";
+    private String dbPassword = "xxx"; // Hiding my password!!
     private String dbDriver = "com.mysql.jdbc.Driver";
 
     // Load the database driver
