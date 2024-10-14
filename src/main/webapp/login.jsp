@@ -5,11 +5,12 @@
     <meta charset="ISO-8859-1">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Login Page</title>
-    <link rel="stylesheet" href="login.css"> 
+    <link rel="stylesheet" href="CSS/login.css"> 
 </head>
 <body>
     <div class="login-page">
         <div class="form">
+        <h2>Login</h2>
         	<!-- Login Form -->
             <form class="login-form" action="Auth" method="post">
             	<input type="hidden" name="action" value="login"> <!-- important: specifies login --> 

@@ -44,7 +44,8 @@ a {
     color: white;
     border-radius: 20px;
     width: 80%;
-    font-family: "all-round-gothic", sans-serif; 
+    font-family: "all-round-gothic", sans-serif;
+    transition: all 0.3s ease; 
 }
 
 a:hover {

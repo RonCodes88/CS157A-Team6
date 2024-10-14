@@ -95,6 +95,40 @@ public class UserDao {
 	
 	}
 	
+	public int getUserIdByEmail(String userEmail) {
+		connectionManager.loadDriver();
+	    Connection con = connectionManager.getConnection();
+	    int userId = -1; 
+	    
+	    try {
+	    	String sql = "SELECT UserID FROM Users WHERE Email = ?";
+	        PreparedStatement ps = con.prepareStatement(sql);
+	        ps.setString(1, userEmail); 
+
+	        ResultSet rs = ps.executeQuery();
+
+	        if (rs.next()) {
+	            userId = rs.getInt("UserID");
+	        }
+	        
+	        rs.close();
+	        ps.close();
+
+	    } catch (SQLException e) {
+	        e.printStackTrace();
+	    } finally {
+	        try {
+	            if (con != null && !con.isClosed()) {
+	                con.close();
+	            }
+	        } catch (SQLException e) {
+	            e.printStackTrace();
+	        }
+	    }
+
+	   return userId;   
+	}
+	
 
 	
 }

@@ -12,24 +12,21 @@ public class TripDao
         connectionManager = new ConnectionManager();
     }
 
-    // Remember to add UserID parameter here 
-    public String addTrip(Trip trip)
+    public int addTrip(Trip trip)
     {
         // Load Driver
         connectionManager.loadDriver();
 
         // Start Connection
         Connection con = connectionManager.getConnection();
-
-        String result = "Trip added successfully";
-
+        int nextId = 1; // Default if no trips
+        
         try
         {
             // Get the max ID for trip increment to ensure uniqueness
             String getMaxIdSql = "SELECT MAX(TripID) FROM trips";
             PreparedStatement getMaxIdPs = con.prepareStatement(getMaxIdSql);
             ResultSet rs = getMaxIdPs.executeQuery();
-            int nextId = 1; // Default if no trips
             if (rs.next()) {
                 nextId = rs.getInt(1) + 1; // Get the max ID, 
                 						   // if it exists, and then increment on existing
@@ -44,14 +41,8 @@ public class TripDao
             addTripPs.setInt(4, trip.getDuration()); // Duration
             addTripPs.setInt(5, trip.getBudget()); // Budget
             addTripPs.setInt(6, trip.getNumOfTravelers()); // Number of Travelers
-            addTripPs.executeUpdate();
-            
-            // Insert userid + tripid
-            
-            
-
+            addTripPs.executeUpdate();          
         } catch (SQLException e) {
-            result = "Trip failed to be created";
             e.printStackTrace();
 
         } finally {
@@ -65,7 +56,7 @@ public class TripDao
             }
         }
 
-        return result;
+        return nextId;
     }
 
 }

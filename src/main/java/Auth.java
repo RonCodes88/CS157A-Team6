@@ -6,6 +6,7 @@ import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
+import javax.servlet.http.HttpSession;
 
 /**
  * Servlet implementation class Auth
@@ -67,21 +68,22 @@ public class Auth extends HttpServlet {
 	}
 	
 	private void handleLogin(HttpServletRequest request, HttpServletResponse response) throws IOException {
-		 String email = request.getParameter("email");
-	     String password = request.getParameter("password");
-	     System.out.println(email);
-	     System.out.println(password);
-	     
-	     UserDao userDao = new UserDao();
-	     boolean isValidUser = userDao.validateUser(email, password);
-	     
-	     if (isValidUser) {
-	    	 response.getWriter().println("Log in Success!");
-	     }
-	     else {
-	    	 response.getWriter().println("Log in Failed!");
-	     }
-	     
+	    String email = request.getParameter("email");
+	    String password = request.getParameter("password");
+	    System.out.println(email);
+	    System.out.println(password);
+	    
+	    UserDao userDao = new UserDao();
+	    boolean isValidUser = userDao.validateUser(email, password);
+	    
+	    if (isValidUser) {
+	        HttpSession session = request.getSession(true); // Create a new session if one doesn't exist
+	        session.setAttribute("user", email);
+	        response.sendRedirect("dashboard.jsp"); // Redirect to dashboard
+	    } else {
+	        response.getWriter().println("Log in Failed!");
+	    }	    
 	}
+
 
 }

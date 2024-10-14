@@ -5,6 +5,7 @@ import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
+import javax.servlet.http.HttpSession;
 
 /*
  * Servlet implementation for TripCreation, connecting the createTrip.jsp and the TripDao
@@ -39,7 +40,17 @@ public class TripCreation extends HttpServlet
 	@Override
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException
 	{
-		// TODO Auto-generated method stub
+		HttpSession session = request.getSession(false);
+		String userEmail = (session != null) ? (String) session.getAttribute("user") : null;
+	    
+	    if (userEmail == null) {
+	        response.sendRedirect("login.jsp"); // Redirect to login if the user is not logged in
+	        return;
+	    }
+	    
+	    UserDao userDao = new UserDao();
+	    int userId = userDao.getUserIdByEmail(userEmail);	    
+	    
 		String startLocation = request.getParameter("startLocation");
 		String destination = request.getParameter("destination");
 		int duration = Integer.parseInt(request.getParameter("duration")); // Parse string to int
@@ -49,15 +60,18 @@ public class TripCreation extends HttpServlet
 		// Create trip given from inputed values
 		Trip trip = new Trip(startLocation, destination, duration, budget, numTravelers);
 		TripDao tripDao = new TripDao();
-		tripDao.addTrip(trip);
+		int tripId = tripDao.addTrip(trip);
 		
-		response.getWriter().println("Trip created. (I hope)");
-	}
-	
-	
-	// NOTE. THIS DOES NOT SAVE THE USERID TO THE TRIP. IT JUST CREATES THE TRIP SO FAR
-	
-	
-	
+		//Adds trip to UserTrips table to associate the Trip with the User
+		UserTripsDao userTripsDao = new UserTripsDao();
+		boolean isTripAdded = userTripsDao.addUserTrip(userId, tripId);
+		
+		if (isTripAdded) {
+	        response.getWriter().println("Trip created and added to your account successfully.");
+	        response.sendRedirect("dashboard.jsp");
+	    } else {
+	        response.getWriter().println("Failed to add the trip to your account. Please try again.");
+	    }
+	}	
 }
 

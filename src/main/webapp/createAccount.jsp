@@ -5,11 +5,13 @@
     <meta charset="ISO-8859-1">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Account Creation Page</title>
-    <link rel="stylesheet" href="register.css"> 
+    <link rel="stylesheet" href="CSS/createAccount.css"> 
 </head>
 <body>
      <div class="create-account">
+
         <div class="form">
+        <h2>Create An Account</h2>
             <!-- Register Form -->
             <form class="register-form" action="Auth" method="post">
             	<input type="hidden" name="action" value="register"> <!-- important: specifies register --> 
@@ -18,6 +20,7 @@
                 
                 <!-- User Preferences -->
                 <label for="currency">Preferred Currency:</label>
+                <br></br>
                 <select name="currency" id="currency" required>
                     <option value="" disabled selected>Select Currency</option>
                     <option value="AUD">Australian Dollar (AUD)</option>
@@ -35,6 +38,7 @@
                 </select>
 
                 <label for="language">Preferred Language:</label>
+                <br></br>
                 <select name="language" id="language" required>
                     <option value="" disabled selected>Select Language</option>
                     <option value="Arabic">Arabic</option>
@@ -54,7 +58,7 @@
                 </select>
 
                 <button type="submit">Create Account</button>
-                <p class="message">Already registered? <a href="login.jsp">Sign In</a></p> <!-- Changed to link to login form -->
+                <p class="message">Already registered? <a href="login.jsp">Sign In</a></p> 
             </form>
         </div>
     </div>
