@@ -66,6 +66,37 @@ footer p {
   font-size: 0.9rem;
 }
 
+#slideoutPanel {
+    position: fixed;
+    top: 0;
+    right: -300px;
+    width: 300px;
+    height: 100%;
+    background-color: white;
+    transition: right 0.3s ease;
+}
+
+#slideoutPanel.open {
+    right: 0;
+    width:500px;
+    background-color: #A0B1E1;
+    border-radius: 10px;
+    box-shadow: 10px 10px 20px black;
+}
+
+button {
+	padding: 5px;
+	border: none;
+	background: none;
+	color: white;
+    font-weight: bold;
+    font-size: 1.2rem;
+}
+
+iframe {
+	border: none;
+}
+
 /* Responsive Design */
 @media (max-width: 768px) {
   nav ul li {
