@@ -11,28 +11,47 @@
 %>
 <!DOCTYPE html>
 <html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>TravelPal Dashboard</title>
-    <link rel="stylesheet" href="CSS/dashboard.css">
-</head>
-<body>
-    <header>
-        <h1>TravelPal Dashboard</h1>
-        <h3>Welcome <%= userEmail %>!</h3>
-    </header>
-
-    <nav>
-        <ul>
-            <li><a href="createTrip.jsp">Create Trip</a></li>
-            <li><a href="currencyConv.jsp">Currency Converter</a></li>
-        </ul>
-    </nav>
-
-    <footer>
-        <p>&copy; Fall 2024 Team 6 TravelPal. All rights reserved.</p>
-    </footer>
-</body>
+	<head>
+	    <meta charset="UTF-8">
+	    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+	    <title>TravelPal Dashboard</title>
+	    <link rel="stylesheet" href="CSS/dashboard.css">
+	    
+	    <script>
+		        function slideoutPanel() {
+		            const panel = document.getElementById('slideoutPanel');
+		            panel.classList.toggle('open');
+		            overlay.style.display = panel.classList.contains('open') ? 'block' : 'none';
+		        }
+		
+		        function closePanel() {
+		            const panel = document.getElementById('slideoutPanel');
+		            panel.classList.remove('open');
+		            overlay.style.display = 'none';
+		        }
+		    </script>
+	</head>
+	
+	<body>
+	    <header>
+	        <h1>TravelPal Dashboard</h1>
+	        <h3>Welcome <%= userEmail %>!</h3>
+	    </header>
+	
+	     <nav>
+	        <ul>
+	            <li><a href="createTrip.jsp">Create Trip</a></li>
+	            <li><button onclick="slideoutPanel()">Currency Converter</button></li>
+	        </ul>
+	    </nav>
+	    
+	    <div id="slideoutPanel">
+	        <button onclick="closePanel()">Close</button>
+	        <iframe src="currencyConv.jsp" width="100%" height="100%"></iframe>
+	    </div>
+	
+	    <footer>
+	        <p>&copy; Fall 2024 Team 6 TravelPal. All rights reserved.</p>
+	    </footer>
+	</body>
 </html>
-
