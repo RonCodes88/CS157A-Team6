@@ -85,6 +85,7 @@ footer p {
 }
 
 button {
+	cursor: pointer;
 	padding: 5px;
 	border: none;
 	background: none;

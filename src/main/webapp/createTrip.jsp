@@ -10,24 +10,51 @@
 <body>
     <div class="container">
         <h2>Create a New Trip</h2>
+        <h3>Let's start by entering some basic travel information...</h3>
         <form action="TripCreation" method="post">
             <label for="startLocation">Start Location:</label>
             <input type="text" id="startLocation" name="startLocation" required>
 
             <label for="destination">Destination:</label>
             <input type="text" id="destination" name="destination" required>
+			
+			<label for="startDate">Start Date:</label>
+            <input type="date" id="startDate" name="startDate" required>
 
+            <label for="endDate">End Date:</label>
+            <input type="date" id="endDate" name="endDate" required>
+            
             <label for="duration">Duration (days):</label>
             <input type="number" id="duration" name="duration" min="1" required>
 
             <label for="budget">Budget ($):</label>
-            <input type="number" id="budget" name="budget" min="0" step="10" required>
+            <input type="number" id="budget" name="budget" min="0" required>
 
             <label for="numTravelers">Number of Travelers:</label>
             <input type="number" id="numTravelers" name="numTravelers" min="1" step="1" required>
 
-            <input type="submit" value="Create Trip">
+            <!-- Dropdown for Flight Class -->
+            <label for="flightClass">Preferred Flight Class:</label>
+            <select id="flightClass" name="flightClass">
+                <option value="Economy">Economy</option>
+                <option value="Premium Economy">Premium Economy</option>
+                <option value="Business">Business</option>
+                <option value="First">First</option>
+            </select>
+
+            <!-- Optional Airline Preference -->
+            <label for="airline">Preferred Airline (Optional):</label>
+            <input type="text" id="airline" name="airline">
+
+            <input type="submit" value="View Flights">
         </form>
     </div>
+
+    <script>
+        document.querySelectorAll('input[type="number"]').forEach(input => {
+            input.addEventListener('wheel', (event) => event.preventDefault());
+        });
+    </script>
 </body>
 </html>
+

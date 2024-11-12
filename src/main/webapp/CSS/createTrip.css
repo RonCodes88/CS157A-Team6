@@ -1,27 +1,102 @@
 @charset "UTF-8";
- 
+
 body {
-     font-family: Arial, sans-serif;
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    background-color: #f4f6fc;
+    color: #333;
+    margin: 0;
+    padding: 0;
 }
+
 .container {
-     width: 50%;
-     margin: 0 auto;
+    width: 60%;
+    margin: 50px auto;
+    background-color: #ffffff;
+    border-radius: 8px;
+    padding: 20px;
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
 }
+
+h2 {
+    color: #A0B1E1;
+    font-size: 2em;
+    text-align: center;
+    margin-bottom: 20px;
+}
+
+h3 {
+    color: #777;
+    font-size: 1.2em;
+    text-align: center;
+    margin-bottom: 30px;
+}
+
 form {
-     display: flex;
-     flex-direction: column;
+    display: flex;
+    flex-direction: column;
+    gap: 15px;
 }
-label, input {
-     margin: 10px 0;
+
+label {
+    font-size: 1em;
+    font-weight: bold;
+    color: #333;
 }
+
+input[type="text"], input[type="date"], input[type="number"], select {
+    padding: 10px;
+    font-size: 1em;
+    border: 2px solid #A0B1E1;
+    border-radius: 5px;
+    outline: none;
+    transition: border-color 0.3s ease-in-out;
+}
+
+input[type="text"]:focus, input[type="date"]:focus, input[type="number"]:focus, select:focus {
+    border-color: #4CAF50;
+}
+
 input[type="submit"] {
-     margin-top: 20px;
-     padding: 10px;
-     background-color: #4CAF50;
-     color: white;
-     border: none;
-     cursor: pointer;
+    padding: 12px;
+    font-size: 1.1em;
+    background-color: #A0B1E1;
+    color: white;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
 }
+
 input[type="submit"]:hover {
-     background-color: #45a049;
+    background-color: #8C9CCF;
+}
+
+input[type="submit"]:active {
+    background-color: #6C7B9D;
+}
+
+input[type="submit"]:focus {
+    outline: none;
+}
+
+input[type="submit"]:disabled {
+    background-color: #B0BFD9;
+    cursor: not-allowed;
+}
+
+input[type="text"], input[type="number"], select {
+    font-size: 1em;
+    padding: 10px;
+    border: 2px solid #A0B1E1;
+    border-radius: 5px;
+}
+
+input[type="number"] {
+    -moz-appearance: textfield;
+}
+
+input[type=number]::-webkit-outer-spin-button,
+input[type=number]::-webkit-inner-spin-button {
+    -webkit-appearance: none;
+    margin: 0;
 }

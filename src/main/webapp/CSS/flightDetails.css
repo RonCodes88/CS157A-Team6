@@ -1,0 +1,106 @@
+/* General Styles */
+body {
+    font-family: Arial, sans-serif;
+    background-color: #f4f4f9;
+    margin: 0;
+    padding: 0;
+}
+
+h2 {
+    text-align: center;
+    color: #333;
+    margin-top: 20px;
+}
+
+/* Table Styles */
+table {
+    width: 90%;
+    margin: 20px auto;
+    border-collapse: collapse;
+    background-color: #fff;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+}
+
+th, td {
+    padding: 12px 15px;
+    text-align: left;
+    border-bottom: 1px solid #ddd;
+}
+
+th {
+    background-color: #A0B1E1; /* Main theme color */
+    color: #fff;
+    font-weight: bold;
+}
+
+td {
+    background-color: #f9f9f9;
+}
+
+/* Hover effect for rows */
+tr:hover td {
+    background-color: #D0D9EC; /* Light shade of the main theme color */
+}
+
+/* Airline Logo Styling */
+td img {
+    border-radius: 5px;
+    max-width: 50px;
+    max-height: 50px;
+}
+
+/* Hidden Details Row Styling */
+#flightDetails_1 {
+    background-color: #F9F9F9;
+    font-size: 14px;
+}
+
+#flightDetails_1 td {
+    padding: 10px 15px;
+    border-top: 1px solid #ddd;
+}
+
+/* View Details Button Styling */
+button {
+    padding: 8px 15px;
+    background-color: #4CAF50; /* Green button */
+    color: white;
+    border: none;
+    cursor: pointer;
+    font-size: 14px;
+    border-radius: 5px;
+}
+
+button:hover {
+    background-color: #45a049;
+}
+
+/* Message Styles */
+p {
+    text-align: center;
+    font-size: 18px;
+    color: #999;
+    margin-top: 40px;
+}
+
+/* Media Queries for Responsive Design */
+@media (max-width: 768px) {
+    table {
+        width: 100%;
+    }
+
+    th, td {
+        padding: 10px 12px;
+    }
+
+    td img {
+        width: 40px;
+        height: auto;
+    }
+
+    button {
+        padding: 8px 12px;
+    }
+}
+
+
