@@ -18,11 +18,11 @@
             <label for="destination">Destination:</label>
             <input type="text" id="destination" name="destination" required>
 			
-			<label for="startDate">Start Date:</label>
-            <input type="date" id="startDate" name="startDate" required>
+			<label for="departureDate">Departure Date:</label>
+            <input type="date" id="departureDate" name="departureDate" required>
 
-            <label for="endDate">End Date:</label>
-            <input type="date" id="endDate" name="endDate" required>
+            <label for="returnDate">Return Date:</label>
+            <input type="date" id="returnDate" name="returnDate" required>
             
             <label for="duration">Duration (days):</label>
             <input type="number" id="duration" name="duration" min="1" required>

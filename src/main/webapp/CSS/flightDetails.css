@@ -104,3 +104,28 @@ p {
 }
 
 
+.light-text {
+    font-weight: normal; /* Lighter font weight */
+    color: #666;         /* Lighter color */
+    font-size: 0.9em;    /* Optional: slightly smaller font size */
+    padding-left: 20px;
+}
+
+.layover {
+    border-top: 3px solid #727372;  /* Light gray line above */
+    border-bottom: 3px solid #727372; /* Light gray line below */
+    padding: 5px 0; /* Add some padding for better spacing */
+    margin: 10px 0; /* Optional: Add some margin for separation */
+    padding-left: 20px;
+}
+
+ul {
+    list-style-type: none; /* Removes default bullets */
+    padding: 0;
+}
+
+li {
+	margin-bottom: 15px;
+}
+
+
