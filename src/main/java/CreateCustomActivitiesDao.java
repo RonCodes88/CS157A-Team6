@@ -11,7 +11,7 @@ public class CreateCustomActivitiesDao {
 		connectionManager = new ConnectionManager();
 	}
 	
-	public boolean addCreateCustomActivitiesDao(int ActivityID, int TripID) {
+	public boolean addCreateCustomActivities(int ActivityID, int TripID) {
 		connectionManager.loadDriver();
 	    Connection con = connectionManager.getConnection();
 	    
