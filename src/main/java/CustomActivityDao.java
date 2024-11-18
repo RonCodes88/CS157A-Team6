@@ -21,7 +21,7 @@ public class CustomActivityDao {
         try
         {
             // Get the max ID for customactivities increment to ensure uniqueness
-            String getMaxIdSql = "SELECT MAX(TripID) FROM customactivities";
+            String getMaxIdSql = "SELECT MAX(ActivityID) FROM customactivities";
             PreparedStatement getMaxIdPs = con.prepareStatement(getMaxIdSql);
             ResultSet rs = getMaxIdPs.executeQuery();
             if (rs.next()) {
