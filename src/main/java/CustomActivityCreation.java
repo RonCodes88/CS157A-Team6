@@ -7,7 +7,7 @@ import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 
 /*
- * Servlet implementation for ActivityCreation, connecting the createCustomActivity.jsp and CustomActivityDao
+ * Servlet implementation for CustomActivityCreation, connecting the createCustomActivity.jsp and CustomActivityDao
  */
 @WebServlet("/CustomActivityCreation")
 public class CustomActivityCreation extends HttpServlet 
