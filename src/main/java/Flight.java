@@ -49,6 +49,7 @@ public class Flight {
         this.departureAirportID = departureAirportID;
         this.arrivalAirportID = arrivalAirportID;
         this.layoverAirportID = layoverAirportID;
+        
     }
 
     // Getters and Setters

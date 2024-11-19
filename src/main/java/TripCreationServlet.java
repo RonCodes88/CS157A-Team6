@@ -272,7 +272,7 @@ public class TripCreationServlet extends HttpServlet
             }
         }
         
-        int firstFlightIDSaved = -1; 
+//        int firstFlightIDSaved = -1; 
         for (int i = 0; i < flightList.size(); i++) {
             Map<String, Object> flightData = flightList.get(i);
             List<Map<String, Object>> flightsArray = (List<Map<String, Object>>) flightData.get("flights");
@@ -325,12 +325,27 @@ public class TripCreationServlet extends HttpServlet
         }
 	}
 	
-	private List<Flight> displayFlightsFromDB(int firstFlightIDSaved) {
-		FlightDao flightDao = new FlightDao();
-		List<Flight> flights = flightDao.displayFlights(firstFlightIDSaved);
-		return flights;
-		
-	}
+//	private JSONObject getHotels(int hotelID, String hotelName, LocalDate checkInDate, LocalDate checkOutDate, double price) {
+//		String apiKey = System.getenv("serp_api_key");
+//		String url = "https://serpapi.com/search.json?engine=google_hotels&q=" + Resorts&check_in_date=2024-11-20&check_out_date=2024-11-21&adults=2&currency=USD&gl=us&hl=en";
+//		
+//		HttpClient client = HttpClient.newHttpClient();
+//	    HttpRequest request = HttpRequest.newBuilder()
+//	            .uri(URI.create(url))
+//	            .build();
+//	    
+//	    HttpResponse<String> response = client.send(request, HttpResponse.BodyHandlers.ofString());
+//	    return new JSONObject(response.body());
+//		
+//		
+//	}
+	
+//	private List<Flight> displayFlightsFromDB(int firstFlightIDSaved) {
+//		FlightDao flightDao = new FlightDao();
+//		List<Flight> flights = flightDao.displayFlights(firstFlightIDSaved);
+//		return flights;
+//		
+//	}
 	
 }
 

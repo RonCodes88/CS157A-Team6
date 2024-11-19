@@ -30,9 +30,10 @@ public class FlightSelectionServlet extends HttpServlet {
 	    int price = Integer.parseInt(request.getParameter("price"));
 	    int totalDuration = Integer.parseInt(request.getParameter("totalDuration"));
 	    int layovers = Integer.parseInt(request.getParameter("layovers"));
+	    String flightNumber = request.getParameter("flightNumber");
 	    
 	    FlightDao flightDao = new FlightDao();
-	    List<Integer> flightIDs = flightDao.selectFlight(airlineLogo, mainDepartureAirport, mainArrivalAirport, price, totalDuration, layovers);
+	    List<Integer> flightIDs = flightDao.selectFlight(airlineLogo, mainDepartureAirport, mainArrivalAirport, price, totalDuration, layovers, flightNumber);
 	    
 	    TripSelectFlightsDao tripSelectFlightsDao = new TripSelectFlightsDao();
 	    boolean isTripSelectFlightAdded = false;

@@ -76,6 +76,7 @@
                         <th>Stops</th>
                         <th>Price</th>
                         <th></th>
+                        <th></th>
                     </tr>
                 </thead>
                 <tbody>
@@ -92,7 +93,8 @@
                 String airlineLogo = (String) flightData.getOrDefault("airline_logo", "");
                 int totalDuration = (int) flightData.getOrDefault("total_duration", 0);
                 String rowId = "flightDetails_" + i;
-%>
+                String flightNumber = (String) ((Map<String, Object>) flightsArray.get(0)).get("flight_number");
+%>				
                 <!-- Flight Row -->
                 <tr>
                     <td><img src="<%= airlineLogo %>" alt="Airline" width="50"></td>
@@ -108,7 +110,8 @@
 							<input type="hidden" name="departureAirport" value="<%= mainDepartureAirport %>">
 				            <input type="hidden" name="arrivalAirport" value="<%= mainArrivalAirport %>">
 				            <input type="hidden" name="price" value="<%= price %>">
-				            <input type="hidden" name="totalDuration" value="<%= totalDuration %>">		            
+				            <input type="hidden" name="totalDuration" value="<%= totalDuration %>">	
+				            <input type="hidden" name="flightNumber" value="<%= flightNumber %>">     
 				            <button type="submit" onclick="addLayoversInput(<%= i %>, <%= layovers %>)">Select Flight</button>
 				        </form>
     				</td> 
