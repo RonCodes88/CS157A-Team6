@@ -1,0 +1,27 @@
+@charset "UTF-8";
+ 
+body {
+     font-family: Arial, sans-serif;
+}
+.container {
+     width: 50%;
+     margin: 0 auto;
+}
+form {
+     display: flex;
+     flex-direction: column;
+}
+label, input {
+     margin: 10px 0;
+}
+input[type="submit"] {
+     margin-top: 20px;
+     padding: 10px;
+     background-color: #4CAF50;
+     color: white;
+     border: none;
+     cursor: pointer;
+}
+input[type="submit"]:hover {
+     background-color: #45a049;
+}
