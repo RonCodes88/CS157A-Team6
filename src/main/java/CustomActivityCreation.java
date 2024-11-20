@@ -41,7 +41,7 @@ public class CustomActivityCreation extends HttpServlet
         // Retrieve input parameters from the form
         String activityName = request.getParameter("activityName");
         String activityDesc = request.getParameter("activityDesc");
-        double price = Double.parseDouble(request.getParameter("price")); // Parse string to double
+        int price = Integer.parseInt(request.getParameter("price"));
         
 
         // Create a CustomActivity given from inputed values 

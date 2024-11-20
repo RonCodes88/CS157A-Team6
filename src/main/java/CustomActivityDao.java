@@ -35,7 +35,7 @@ public class CustomActivityDao {
         addCustomActSql.setInt(1, nextId); 
         addCustomActSql.setString(2, activity.getActivityName());
         addCustomActSql.setString(3, activity.getActivityDesc());
-        addCustomActSql.setDouble(4, activity.getPrice());
+        addCustomActSql.setInt(4, activity.getPrice());
         
         addCustomActSql.executeUpdate();
         

@@ -18,7 +18,7 @@
             <textarea id="activityDesc" name="activityDesc" rows="5" required></textarea>
 
             <label for="price">Price ($):</label>
-            <input type="number" id="price" name="price" min="0" step=".01" required>
+            <input type="number" id="price" name="price" min="0" required>
 
             <input type="submit" value="Create Activity">
         </form>

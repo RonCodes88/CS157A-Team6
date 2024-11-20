@@ -1,12 +1,6 @@
-
-
-
-
-
-
 public class CustomActivity {
 	private String activityName, activityDesc;
-	private double price;
+	private int price;
 	
 	
 	
@@ -14,7 +8,7 @@ public class CustomActivity {
         super();
     }
 
-	public CustomActivity(String activityName, String activityDesc, double price) {
+	public CustomActivity(String activityName, String activityDesc, int price) {
 		super();
 		this.activityName = activityName;
 		this.activityDesc = activityDesc;
@@ -37,11 +31,11 @@ public class CustomActivity {
 		this.activityDesc = activityDesc;
 	}
 
-	public double getPrice() {
+	public int getPrice() {
 		return price;
 	}
 
-	public void setPrice(double price) {
+	public void setPrice(int price) {
 		this.price = price;
 	}
 
