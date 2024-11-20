@@ -55,8 +55,112 @@ public class TripDao
                 e.printStackTrace();
             }
         }
-
+        
         return nextId;
+    }
+    
+    // Update/edit trip
+    public boolean updateTrip(Trip trip, int tripID) {
+    	connectionManager.loadDriver();
+    	Connection con = connectionManager.getConnection();
+    	boolean updated = false;
+    	
+    	try {
+    		String updateTripsDB = "UPDATE trips SET StartLocation = ?, Destination = ?, Duration = ?, Budget = ?, Travelers = ? WHERE TripID = ?";
+    		PreparedStatement updateTripsPs = con.prepareStatement(updateTripsDB);
+    		updateTripsPs.setString(1,  trip.getStartLocation());
+    		updateTripsPs.setString(2, trip.getDestination());
+    		updateTripsPs.setInt(3,  trip.getDuration());
+    		updateTripsPs.setInt(4, trip.getBudget());
+    		updateTripsPs.setInt(5, trip.getNumOfTravelers());
+    		updateTripsPs.setInt(6, tripID);
+    		
+    		if (updateTripsPs.executeUpdate() > 0) { updated = true; }
+    		
+    	} catch (SQLException e) {
+    		e.printStackTrace();
+    	}
+    	finally {
+    		try {
+    			if (con != null) {
+    				con.close();
+    			}
+    		} catch (SQLException e) {
+    			e.printStackTrace();
+    		}
+    	}
+    	
+    	return updated;
+    }
+    
+    public boolean deleteTrip(int tripID)
+    {
+        connectionManager.loadDriver();
+        Connection con = connectionManager.getConnection();
+        boolean deleted = false;
+
+        try
+        {
+            String deleteTripSql = "DELETE FROM trips WHERE TripID = ?";
+            PreparedStatement deleteTripPs = con.prepareStatement(deleteTripSql);
+            deleteTripPs.setInt(1, tripID);
+
+            int rowsDeleted = deleteTripPs.executeUpdate();
+            if (rowsDeleted > 0) {
+            	deleted = true;
+            }
+        }
+        catch (SQLException e)
+        {
+            e.printStackTrace();
+        }
+        finally
+        {
+            try {
+                if (con != null) {
+                    con.close();
+                }
+            } catch (SQLException e) {
+                e.printStackTrace();
+            }
+        }
+
+        return deleted;
+    }
+
+    public Trip getTripById(int tripID) {
+        connectionManager.loadDriver();
+        Connection con = connectionManager.getConnection();
+        Trip trip = null;
+
+        try {
+            String getTripByIDSql = "SELECT * FROM trips WHERE TripID = ?";
+            PreparedStatement getTripByIDPs = con.prepareStatement(getTripByIDSql);
+            getTripByIDPs.setInt(1, tripID);
+
+            ResultSet rs = getTripByIDPs.executeQuery();
+
+            if (rs.next()) {
+                String startLocation = rs.getString("StartLocation");
+                String destination = rs.getString("Destination");
+                int duration = rs.getInt("Duration");
+                int budget = rs.getInt("Budget");
+                int numOfTravelers = rs.getInt("Travelers");
+                trip = new Trip(startLocation, destination, duration, budget, numOfTravelers, tripID);
+            }
+          
+        } catch (SQLException e) {
+            e.printStackTrace();
+        } finally {
+            try {
+                if (con != null) {
+                    con.close();
+                }
+            } catch (SQLException e) {
+                e.printStackTrace();
+            }
+        }
+        return trip;
     }
 
 }
