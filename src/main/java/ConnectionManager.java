@@ -20,7 +20,6 @@ public class ConnectionManager {
     // Establish and return a database connection
     public Connection getConnection() {
         Connection con = null;
-        System.out.println(dbPassword);
         try {
             con = DriverManager.getConnection(dbUrl, dbUsername, dbPassword);
         } catch (SQLException e) {
