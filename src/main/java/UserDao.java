@@ -31,7 +31,7 @@ public class UserDao {
 	        userStatement.setInt(1, nextId);                 // Generated ID
 	        userStatement.setString(2, user.getEmail());   // Email
 	        userStatement.setString(3, user.getPassword());// Password
-	        userStatement.setString(4, "regular user");      // RoleName
+	        userStatement.setString(4, user.getRoleName());      // RoleName
 	        userStatement.executeUpdate();
 	        
 	        String addUserPreferencesSql = "INSERT INTO userpreferences (UserID, Language, Currency) VALUES (?,?,?)";

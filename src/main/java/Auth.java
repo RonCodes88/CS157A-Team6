@@ -60,10 +60,15 @@ public class Auth extends HttpServlet {
         String currency = request.getParameter("currency");
         String language = request.getParameter("language");
         
-        User user = new User(email, password, currency, language);
         UserDao userDao = new UserDao();
-        userDao.register(user);
         
+        if (email.contains("@travelpal.org")) {
+        	User admin = new User(email, password, currency, language, "admin");
+        	userDao.register(admin);
+        } else {
+        	User user = new User(email, password, currency, language, "regular user");
+        	userDao.register(user);
+        }              
         response.sendRedirect("home.html");
 	}
 	
