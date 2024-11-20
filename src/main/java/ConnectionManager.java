@@ -5,7 +5,7 @@ import java.sql.SQLException;
 public class ConnectionManager {
 	private String dbUrl = "jdbc:mysql://localhost:3306/team6";
     private String dbUsername = "root";
-    private String dbPassword = "bleak123.";
+    private String dbPassword = "Turtle$$678:)";
     private String dbDriver = "com.mysql.jdbc.Driver";
 
     // Load the database driver
