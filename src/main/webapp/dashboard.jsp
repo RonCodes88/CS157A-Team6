@@ -29,6 +29,14 @@
 		            panel.classList.remove('open');
 		            overlay.style.display = 'none';
 		        }
+		        
+		        window.onload = function() {
+		            const params = new URLSearchParams(window.location.search);
+		            if (params.get('message') === 'success') {
+		                alert('Trip created successfully!');
+		            }
+		        };
+		        
 		    </script>
 	</head>
 	

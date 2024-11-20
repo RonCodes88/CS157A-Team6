@@ -1,4 +1,5 @@
 import java.io.IOException;
+import java.util.Collections;
 import java.util.List;
 
 import javax.servlet.ServletException;
@@ -8,7 +9,7 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
 
-@WebServlet("/FlightSelection")
+@WebServlet("/FlightSelectionServlet")
 public class FlightSelectionServlet extends HttpServlet {
 	private static final long serialVersionUID = 1L;
 	
@@ -34,7 +35,7 @@ public class FlightSelectionServlet extends HttpServlet {
 	    
 	    FlightDao flightDao = new FlightDao();
 	    List<Integer> flightIDs = flightDao.selectFlight(airlineLogo, mainDepartureAirport, mainArrivalAirport, price, totalDuration, layovers, flightNumber);
-	    
+	    Collections.sort(flightIDs);
 	    TripSelectFlightsDao tripSelectFlightsDao = new TripSelectFlightsDao();
 	    boolean isTripSelectFlightAdded = false;
 	    for (int flightID : flightIDs) {
@@ -42,7 +43,7 @@ public class FlightSelectionServlet extends HttpServlet {
 	    }
 	    
 	    if (isTripSelectFlightAdded) {
-	        response.getWriter().println("TripSelectFlights all added successfully.");
+	        response.sendRedirect("findHotels.jsp");
 	    } else {
 	    	response.getWriter().println("TripSelectFlights unsuccessful.");
 	    }

@@ -102,8 +102,8 @@ public class TripCreationServlet extends HttpServlet
 		
 		if (isTripAdded && startIATA != null && destinationIATA != null) {
 			try {
-				JSONObject flightsData = getFlights(startIATA, destinationIATA, departureDate, returnDate, flightClass, airline);
-				FlightDao flightDao = new FlightDao();
+				JSONObject flightsData = getFlights(startIATA, destinationIATA, departureDate, returnDate, flightClass, airline, budget);
+//				FlightDao flightDao = new FlightDao();
 				
 //				int firstFlightIDSaved = flightDao.getNextMaxFlightID();
 				saveFlightsIntoDB(flightsData, departureDate, returnDate);
@@ -225,7 +225,7 @@ public class TripCreationServlet extends HttpServlet
         return airlineCodes.getOrDefault(airlineName, null);
     }
 	
-	private JSONObject getFlights(String startIATA, String destinationIATA, LocalDate startDate, LocalDate endDate, String flightClass, String airline) throws IOException, InterruptedException {
+	private JSONObject getFlights(String startIATA, String destinationIATA, LocalDate startDate, LocalDate endDate, String flightClass, String airline, int budget) throws IOException, InterruptedException {
 	    String apiKey = System.getenv("serp_api_key");
 	    String url = "";
 	    if (flightClass.equals("Economy")) {
@@ -241,6 +241,8 @@ public class TripCreationServlet extends HttpServlet
 	    if (airline != null) { 
 	    	url += "&include_airlines=" + airline;
 	    }
+	    url += "&max_price=" + budget;
+	    
 	    System.out.println(url);
 	    HttpClient client = HttpClient.newHttpClient();
 	    HttpRequest request = HttpRequest.newBuilder()
@@ -325,21 +327,7 @@ public class TripCreationServlet extends HttpServlet
         }
 	}
 	
-//	private JSONObject getHotels(int hotelID, String hotelName, LocalDate checkInDate, LocalDate checkOutDate, double price) {
-//		String apiKey = System.getenv("serp_api_key");
-//		String url = "https://serpapi.com/search.json?engine=google_hotels&q=" + Resorts&check_in_date=2024-11-20&check_out_date=2024-11-21&adults=2&currency=USD&gl=us&hl=en";
-//		
-//		HttpClient client = HttpClient.newHttpClient();
-//	    HttpRequest request = HttpRequest.newBuilder()
-//	            .uri(URI.create(url))
-//	            .build();
-//	    
-//	    HttpResponse<String> response = client.send(request, HttpResponse.BodyHandlers.ofString());
-//	    return new JSONObject(response.body());
-//		
-//		
-//	}
-	
+
 //	private List<Flight> displayFlightsFromDB(int firstFlightIDSaved) {
 //		FlightDao flightDao = new FlightDao();
 //		List<Flight> flights = flightDao.displayFlights(firstFlightIDSaved);

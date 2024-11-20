@@ -27,7 +27,7 @@
             <label for="duration">Duration (days):</label>
             <input type="number" id="duration" name="duration" min="1" required>
 
-            <label for="budget">Budget ($):</label>
+            <label for="budget">Flight budget per person ($):</label>
             <input type="number" id="budget" name="budget" min="0" required>
 
             <label for="numTravelers">Number of Travelers:</label>

@@ -63,7 +63,7 @@ input[type="text"]:focus, input[type="date"]:focus, input[type="number"]:focus, 
     border-color: #4CAF50;
 }
 
-input[type="submit"] {
+input[type="submit"], button[type="submit"] {
     padding: 12px;
     font-size: 1.1em;
     background-color: #A0B1E1;
@@ -71,22 +71,25 @@ input[type="submit"] {
     border: none;
     border-radius: 5px;
     cursor: pointer;
-    transition: background-color 0.3s ease;
+    transition: background-color 0.3s ease, transform 0.2s ease;
+    width: 100%; /* Optional: if you want the button to take the full width of the container */
 }
 
-input[type="submit"]:hover {
+input[type="submit"]:hover, button[type="submit"]:hover {
     background-color: #8C9CCF;
+    transform: scale(1.05); /* Slightly enlarges the button on hover */
 }
 
-input[type="submit"]:active {
+input[type="submit"]:active, button[type="submit"]:active {
     background-color: #6C7B9D;
+    transform: scale(1); /* Resets the scale when clicked */
 }
 
-input[type="submit"]:focus {
+input[type="submit"]:focus, button[type="submit"]:focus {
     outline: none;
 }
 
-input[type="submit"]:disabled {
+input[type="submit"]:disabled, button[type="submit"]:disabled {
     background-color: #B0BFD9;
     cursor: not-allowed;
 }
@@ -112,3 +115,4 @@ input[type=number]::-webkit-inner-spin-button {
     -webkit-appearance: none;
     margin: 0;
 }
+

@@ -98,64 +98,64 @@ public class FlightDao {
         }
     }
     
-    public List<Flight> displayFlights(int firstFlightIDSaved) {
-    	// Load Driver
-        connectionManager.loadDriver();
-
-        // Start Connection
-        Connection con = connectionManager.getConnection();
-        List<Flight> flights = new ArrayList<>();
-        try
-        {
-        	String selectFlightsSql = "SELECT * FROM Flights WHERE FlightID >= ?";
-            PreparedStatement selectFlightsPs = con.prepareStatement(selectFlightsSql);
-            selectFlightsPs.setInt(1, firstFlightIDSaved);
-
-            ResultSet rs = selectFlightsPs.executeQuery();
-            
-            while (rs.next()) {
-                int flightID = rs.getInt("FlightID");
-                String flightClass = rs.getString("FlightClass");
-                String airline = rs.getString("Airline");
-                int price = rs.getInt("Price");
-                Date departureDate = rs.getDate("DepartureDate");
-                Date returnDate = rs.getDate("ReturnDate");
-                String departureAirport = rs.getString("DepartureAirport");
-                String arrivalAirport = rs.getString("ArrivalAirport");
-                String departureTime = rs.getString("DepartureTime");
-                String arrivalTime = rs.getString("ArrivalTime");
-                String airlineLogo = rs.getString("AirlineLogo");
-                String flightNumber = rs.getString("FlightNumber");
-                String layoverAirport = rs.getString("LayoverAirport");
-                int layoverDuration = rs.getInt("LayoverDuration");
-                int totalDuration = rs.getInt("TotalDuration");
-                String departureAirportID = rs.getString("DepartureAirportID");
-                String arrivalAirportID = rs.getString("ArrivalAirportID");
-                String layoverAirportID = rs.getString("LayoverAirportID");
-                
-                Flight flight = new Flight(flightID, flightClass, airline, price, departureDate.toLocalDate(), returnDate.toLocalDate(),
-                        departureAirport, arrivalAirport, departureTime, arrivalTime, airlineLogo, flightNumber,
-                        layoverAirport, layoverDuration, totalDuration, departureAirportID, arrivalAirportID, layoverAirportID);
-                
-                flights.add(flight);
-            }
-            
-        } catch (SQLException e) {
-            e.printStackTrace();
-
-        } finally {
-            // Close connection
-            try {
-                if (con != null) {
-                    con.close();
-                }
-            } catch (SQLException e) {
-                e.printStackTrace();
-            }
-        }
-        
-        return flights;
-    }
+//    public List<Flight> displayFlights(int firstFlightIDSaved) {
+//    	// Load Driver
+//        connectionManager.loadDriver();
+//
+//        // Start Connection
+//        Connection con = connectionManager.getConnection();
+//        List<Flight> flights = new ArrayList<>();
+//        try
+//        {
+//        	String selectFlightsSql = "SELECT * FROM Flights WHERE FlightID >= ?";
+//            PreparedStatement selectFlightsPs = con.prepareStatement(selectFlightsSql);
+//            selectFlightsPs.setInt(1, firstFlightIDSaved);
+//
+//            ResultSet rs = selectFlightsPs.executeQuery();
+//            
+//            while (rs.next()) {
+//                int flightID = rs.getInt("FlightID");
+//                String flightClass = rs.getString("FlightClass");
+//                String airline = rs.getString("Airline");
+//                int price = rs.getInt("Price");
+//                Date departureDate = rs.getDate("DepartureDate");
+//                Date returnDate = rs.getDate("ReturnDate");
+//                String departureAirport = rs.getString("DepartureAirport");
+//                String arrivalAirport = rs.getString("ArrivalAirport");
+//                String departureTime = rs.getString("DepartureTime");
+//                String arrivalTime = rs.getString("ArrivalTime");
+//                String airlineLogo = rs.getString("AirlineLogo");
+//                String flightNumber = rs.getString("FlightNumber");
+//                String layoverAirport = rs.getString("LayoverAirport");
+//                int layoverDuration = rs.getInt("LayoverDuration");
+//                int totalDuration = rs.getInt("TotalDuration");
+//                String departureAirportID = rs.getString("DepartureAirportID");
+//                String arrivalAirportID = rs.getString("ArrivalAirportID");
+//                String layoverAirportID = rs.getString("LayoverAirportID");
+//                
+//                Flight flight = new Flight(flightID, flightClass, airline, price, departureDate.toLocalDate(), returnDate.toLocalDate(),
+//                        departureAirport, arrivalAirport, departureTime, arrivalTime, airlineLogo, flightNumber,
+//                        layoverAirport, layoverDuration, totalDuration, departureAirportID, arrivalAirportID, layoverAirportID);
+//                
+//                flights.add(flight);
+//            }
+//            
+//        } catch (SQLException e) {
+//            e.printStackTrace();
+//
+//        } finally {
+//            // Close connection
+//            try {
+//                if (con != null) {
+//                    con.close();
+//                }
+//            } catch (SQLException e) {
+//                e.printStackTrace();
+//            }
+//        }
+//        
+//        return flights;
+//    }
     
     public List<Integer> selectFlight(String airlineLogo, String mainDepartureAirport, String mainArrivalAirport, int price, int totalDuration, int layovers, String flightNumber) {
     	// Load Driver
@@ -192,7 +192,7 @@ public class FlightDao {
             	
         	} else {
         		String selectFirstFlightSql = "SELECT * FROM flights WHERE airlineLogo = ? " +
-        				"AND (departureAirport = ? OR arrivalAirport = ?)" +
+        				"AND (departureAirport = ?)" +
               			"AND Price = ? " +
               			"AND totalDuration = ? " +
               			"AND flightNumber = ? " + 
@@ -201,41 +201,60 @@ public class FlightDao {
         		PreparedStatement selectFirstFlightPs = con.prepareStatement(selectFirstFlightSql);
         		selectFirstFlightPs.setString(1, airlineLogo);
             	selectFirstFlightPs.setString(2, mainDepartureAirport);
-            	selectFirstFlightPs.setString(3, mainArrivalAirport);
-            	selectFirstFlightPs.setInt(4, price);
-            	selectFirstFlightPs.setInt(5, totalDuration);
-            	selectFirstFlightPs.setString(6, flightNumber);
+            	selectFirstFlightPs.setInt(3, price);
+            	selectFirstFlightPs.setInt(4, totalDuration);
+            	selectFirstFlightPs.setString(5, flightNumber);
         		
         		ResultSet firstFlightRS = selectFirstFlightPs.executeQuery();    
             	
-        		int flightID = -1; 
+        		int firstFlightID = 0;
         		if (firstFlightRS.next()) {
-        		    flightID = firstFlightRS.getInt("FlightID");
-        		    flightIDs.add(flightID);
+        		    firstFlightID = firstFlightRS.getInt("FlightID");
+        		    flightIDs.add(firstFlightID);
         		} else {
         		    System.out.println("No matching flight found in the first query.");
         		}
-
-        		if (flightID != -1) {
-        		    String selectMultipleFlightsSql = "SELECT * FROM flights WHERE airlineLogo = ? " +
-        		        "AND (departureAirport = ? OR arrivalAirport = ?)" +
+        		
+        		String selectLastFlightSql = "SELECT * FROM flights WHERE airlineLogo = ? " +
+        				"AND (arrivalAirport = ?)" +
+              			"AND Price = ? " +
+              			"AND totalDuration = ? " +
+              			"ORDER BY flightID DESC LIMIT 1";
+        		
+        		PreparedStatement selectLastFlightPs = con.prepareStatement(selectLastFlightSql);
+        		selectLastFlightPs.setString(1, airlineLogo);
+            	selectLastFlightPs.setString(2, mainArrivalAirport);
+            	selectLastFlightPs.setInt(3, price);
+            	selectLastFlightPs.setInt(4, totalDuration);
+            	
+            	ResultSet lastFlightRS = selectLastFlightPs.executeQuery();
+            	
+            	int lastFlightID = 0;
+            	if (lastFlightRS.next()) {
+        		    lastFlightID = lastFlightRS.getInt("FlightID");
+        		    flightIDs.add(lastFlightID);
+        		} else {
+        		    System.out.println("No matching flight found in the last query.");
+        		}
+        		
+        		String selectLayoverFlightsSql = "SELECT * FROM flights WHERE airlineLogo = ? " +
         		        "AND Price = ? " +
         		        "AND totalDuration = ? " +
-        		        "AND FlightID > ?";
+        		        "AND FlightID > ? " + 
+        		        "AND FlightID < ? ";
 
-        		    PreparedStatement selectMultipleFlightsPs = con.prepareStatement(selectMultipleFlightsSql);
-        		    selectMultipleFlightsPs.setString(1, airlineLogo);
-        		    selectMultipleFlightsPs.setString(2, mainDepartureAirport);
-        		    selectMultipleFlightsPs.setString(3, mainArrivalAirport);
-        		    selectMultipleFlightsPs.setInt(4, price);
-        		    selectMultipleFlightsPs.setInt(5, totalDuration);
-        		    selectMultipleFlightsPs.setInt(6, flightID);
+        		PreparedStatement selectLayoverFlightsPs = con.prepareStatement(selectLayoverFlightsSql);
+        		selectLayoverFlightsPs.setString(1, airlineLogo);
+        		selectLayoverFlightsPs.setInt(2, price);
+        		selectLayoverFlightsPs.setInt(3, totalDuration);
+        		selectLayoverFlightsPs.setInt(4, firstFlightID);
+        		selectLayoverFlightsPs.setInt(5, lastFlightID);
 
-        		    ResultSet multipleFlightsRS = selectMultipleFlightsPs.executeQuery();
 
-        		    while (multipleFlightsRS.next()) {
-        		        flightIDs.add(multipleFlightsRS.getInt("FlightID"));
-        		    }
+        		ResultSet layoverFlightsRS = selectLayoverFlightsPs.executeQuery();
+
+        		while (layoverFlightsRS.next()) {
+        		    flightIDs.add(layoverFlightsRS.getInt("FlightID"));
         		}
         	}
  
