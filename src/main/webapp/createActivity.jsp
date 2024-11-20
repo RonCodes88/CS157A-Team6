@@ -5,12 +5,12 @@
 <head>
     <meta charset="UTF-8">
     <title>Create Activity</title>
-    <link rel="stylesheet" href="CSS/createCustomActivity.css" />
+    <link rel="stylesheet" href="CSS/createActivity.css" />
 </head>
 <body>
 	<div class = "container">
 	<h2>Create an Activity</h2>
-       <form action="CustomActivityCreation" method="post">
+       <form action="ActivityServlet" method="post">
             <label for="activityName">Activity Name:</label>
             <input type="text" id="activityName" name="activityName" required>
 

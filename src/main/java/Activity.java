@@ -1,14 +1,14 @@
-public class CustomActivity {
+public class Activity {
 	private String activityName, activityDesc;
 	private int price;
 	
 	
 	
-    public CustomActivity() {
+    public Activity() {
         super();
     }
 
-	public CustomActivity(String activityName, String activityDesc, int price) {
+	public Activity(String activityName, String activityDesc, int price) {
 		super();
 		this.activityName = activityName;
 		this.activityDesc = activityDesc;
