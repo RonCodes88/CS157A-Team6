@@ -55,6 +55,7 @@ public class TripCreation extends HttpServlet
 		int duration = Integer.parseInt(request.getParameter("duration")); // Parse string to int
 		int budget = Integer.parseInt(request.getParameter("budget"));
 		int numTravelers = Integer.parseInt(request.getParameter("numTravelers"));
+		int tripID = Integer.parseInt(request.getParameter("tripID"));
 		
 		// Create trip given from inputed values
 		Trip trip = new Trip(startLocation, destination, duration, budget, numTravelers, tripID);
@@ -73,3 +74,4 @@ public class TripCreation extends HttpServlet
 	    }
 	}	
 }
+
