@@ -1,4 +1,3 @@
-
 import java.io.IOException;
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
@@ -58,7 +57,7 @@ public class TripCreation extends HttpServlet
 		int numTravelers = Integer.parseInt(request.getParameter("numTravelers"));
 		
 		// Create trip given from inputed values
-		Trip trip = new Trip(startLocation, destination, duration, budget, numTravelers);
+		Trip trip = new Trip(startLocation, destination, duration, budget, numTravelers, tripID);
 		TripDao tripDao = new TripDao();
 		int tripId = tripDao.addTrip(trip);
 		
@@ -74,4 +73,3 @@ public class TripCreation extends HttpServlet
 	    }
 	}	
 }
-
