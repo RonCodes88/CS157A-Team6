@@ -1,20 +1,21 @@
-
 public class Trip
 {
 	private String startLocation, destination;
-	private int duration, budget, numOfTravelers;
+	private int duration, budget, numOfTravelers, tripID;
 
 	public Trip() {
 		super();
 	}
 	
-	public Trip(String startLocation, String destination, int duration, int budget, int numOfTravelers) {
+	public Trip(String startLocation, String destination, 
+			int duration, int budget, int numOfTravelers, int tripID) {
 		super();
 		this.startLocation = startLocation;
 		this.destination = destination;
 		this.duration = duration;
 		this.budget = budget;
 		this.numOfTravelers = numOfTravelers;
+		this.tripID = tripID;
 	}
 
 	public String getStartLocation() {
@@ -57,7 +58,11 @@ public class Trip
 		this.numOfTravelers = numOfTravelers;
 	}
 	
+	public int getTripID() {
+		return tripID;
+	}
 	
-	
-
+	public void setTripID(int tripID) {
+		this.tripID = tripID;
+	}
 }
