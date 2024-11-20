@@ -1,5 +1,3 @@
-<%@ page language="java" contentType="text/html; charset=ISO-8859-1" pageEncoding="ISO-8859-1"%>
-<!DOCTYPE html>
 <html lang="en">
 <head>
     <meta charset="ISO-8859-1">
@@ -10,10 +8,19 @@
 <body>
     <div class="login-page">
         <div class="form">
-        <h2>Login</h2>
-        	<!-- Login Form -->
+            <h2>Login</h2>
+            <!-- Error Message -->
+            <%
+                String errorMessage = request.getParameter("error");
+                if (errorMessage != null && !errorMessage.isEmpty()) {
+            %>
+                <p style="color: red;"><%= errorMessage %></p>
+            <%
+                }
+            %>
+            <!-- Login Form -->
             <form class="login-form" action="Auth" method="post">
-            	<input type="hidden" name="action" value="login"> <!-- important: specifies login --> 
+                <input type="hidden" name="action" value="login"> <!-- important: specifies login --> 
                 <input type="text" name="email" placeholder="Email" required/>
                 <input type="password" name="password" placeholder="Password" required/>
                 <button type="submit">Login</button>
