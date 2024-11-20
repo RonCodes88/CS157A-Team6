@@ -29,14 +29,6 @@
 		            panel.classList.remove('open');
 		            overlay.style.display = 'none';
 		        }
-		        
-		        window.onload = function() {
-		            const params = new URLSearchParams(window.location.search);
-		            if (params.get('message') === 'success') {
-		                alert('Trip created successfully!');
-		            }
-		        };
-		        
 		    </script>
 	</head>
 	
@@ -49,6 +41,10 @@
 	     <nav>
 	        <ul>
 	            <li><a href="createTrip.jsp">Create Trip</a></li>
+	            <%-- View Trips button with action to run back-end first--%>
+	            <li><form action="TripViewServlet" method="post">
+    			<button type="submit">View My Trips</button>
+				</form></li>
 	            <li><button onclick="slideoutPanel()">Currency Converter</button></li>
 	        </ul>
 	    </nav>
