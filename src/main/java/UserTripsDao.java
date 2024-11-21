@@ -54,7 +54,7 @@ public class UserTripsDao {
 	   
 	    // Query and add the attributes to a new Trip and add each Trip to the list
 	    try{
-	    	String query = "SELECT t.startLocation, t.destination, t.duration, t.budget, t.travelers, t.flightclass, t.airline, t.startdate, t.enddate FROM trips t JOIN usertrips ut ON t.TripID = ut.TripID WHERE ut.UserID = ?";
+	    	String query = "SELECT t.tripID, t.startLocation, t.destination, t.duration, t.budget, t.travelers, t.flightclass, t.airline, t.startdate, t.enddate FROM trips t JOIN usertrips ut ON t.TripID = ut.TripID WHERE ut.UserID = ?";
 	    	PreparedStatement ps = con.prepareStatement(query);
 	    	ps.setInt(1, userId);
 	    	
@@ -64,6 +64,7 @@ public class UserTripsDao {
 	    	while (rs.next())
 	    	{
 	    		trips.add(new Trip(
+	    				rs.getInt("TripID"),
 	    			    rs.getString("startLocation"),
 	    			    rs.getString("destination"),
 	    			    rs.getInt("duration"),

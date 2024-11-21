@@ -24,6 +24,7 @@ public class FlightSelectionServlet extends HttpServlet {
 	
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 	    int TripID = (int) request.getSession().getAttribute("TripID");
+	    request.setCharacterEncoding("UTF-8");
 	    
 		String airlineLogo = request.getParameter("airlineLogo");
 	    String mainDepartureAirport = request.getParameter("departureAirport");

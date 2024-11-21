@@ -63,7 +63,6 @@ public class TripCreationServlet extends HttpServlet
 	    
 	    UserDao userDao = new UserDao();
 	    int userId = userDao.getUserIdByEmail(userEmail);	    
-	    
 		String startLocation = request.getParameter("startLocation");
 		String destination = request.getParameter("destination");
 		int duration = Integer.parseInt(request.getParameter("duration")); 
@@ -92,7 +91,7 @@ public class TripCreationServlet extends HttpServlet
 		}
         
 		// Create trip given from inputed values
-		Trip trip = new Trip(startLocation, destination, duration, budget, numTravelers, flightClass, airline, departureDate, returnDate);
+		Trip trip = new Trip(0, startLocation, destination, duration, budget, numTravelers, flightClass, airline, departureDate, returnDate);
 		TripDao tripDao = new TripDao();
 		int tripId = tripDao.addTrip(trip);
 		
@@ -130,6 +129,7 @@ public class TripCreationServlet extends HttpServlet
 	private String getAirportCode(String location) throws IOException, InterruptedException {
 	    // Construct the API request URL to call Google Places API
 	    String apiKey = System.getenv("google_maps_api_key");
+	    
 //	    System.out.println(apiKey);
 	    String url = "https://maps.googleapis.com/maps/api/place/textsearch/json?query=airport+near+" + location.replace(" ", "%20") + "&key=" + apiKey;
 	    	
@@ -227,6 +227,8 @@ public class TripCreationServlet extends HttpServlet
 	
 	private JSONObject getFlights(String startIATA, String destinationIATA, LocalDate startDate, LocalDate endDate, String flightClass, String airline, int budget) throws IOException, InterruptedException {
 	    String apiKey = System.getenv("serp_api_key");
+
+		
 	    String url = "";
 	    if (flightClass.equals("Economy")) {
 	    	url = "https://serpapi.com/search.json?engine=google_flights&api_key=" + apiKey + "&departure_id=" + startIATA + "&arrival_id=" + destinationIATA + "&outbound_date=" + startDate + "&return_date=" + endDate + "&travel_class=" + "1";

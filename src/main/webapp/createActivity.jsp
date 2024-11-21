@@ -11,6 +11,9 @@
 	<div class = "container">
 	<h2>Create an Activity</h2>
        <form action="ActivityServlet" method="post">
+       		 <input type="hidden" name="tripID" value="<%= request.getParameter("tripID") %>">
+       
+       
             <label for="activityName">Activity Name:</label>
             <input type="text" id="activityName" name="activityName" required>
 

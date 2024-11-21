@@ -78,6 +78,7 @@ public class TripViewServlet extends HttpServlet
 	    // a map to mimic a Trip object
 	    for (Trip trip : trips) {
 	        Map<String, Object> map = new HashMap<>();
+	        map.put("tripID", trip.getTripID());
 	        map.put("startLocation", trip.getStartLocation());
 	        map.put("destination", trip.getDestination());
 	        map.put("duration", trip.getDuration());

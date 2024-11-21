@@ -1,16 +1,25 @@
 public class Activity {
 	private String activityName, activityDesc;
-	private int price;
+	private int activityID, price;
 
   public Activity() {
         super();
     }
 
-	public Activity(String activityName, String activityDesc, int price) {
+	public Activity(int activityID, String activityName, String activityDesc, int price) {
 		super();
+		this.activityID = activityID;
 		this.activityName = activityName;
 		this.activityDesc = activityDesc;
 		this.price = price;
+	}
+
+	public int getActivityID() {
+		return activityID;
+	}
+
+	public void setActivityID(int activityID) {
+		this.activityID = activityID;
 	}
 
 	public String getActivityName() {
