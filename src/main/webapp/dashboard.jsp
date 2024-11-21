@@ -29,6 +29,28 @@
 		            panel.classList.remove('open');
 		            overlay.style.display = 'none';
 		        }
+		        
+		        function fetchTrips() {
+		            fetch('/TravelPal/TripViewServlet', { method: 'POST' })
+		                .then(response => {
+		                    if (!response.ok) {
+		                        throw new Error('Network response was not ok');
+		                    }
+		                    return response.text();
+		                })
+		                .then(html => {
+		                    // Populate trips in the designated container
+		                    const tripsContainer = document.getElementById('tripsContainer');
+		                    tripsContainer.innerHTML = html;
+
+		                    // Make the section visible if hidden
+		                    const tripSection = document.getElementById('tripSection');
+		                    tripSection.style.display = 'block';
+		                })
+		                .catch(error => {
+		                    console.error('Error fetching trips:', error);
+		                });
+		        }		        
 		    </script>
 	</head>
 	
@@ -41,10 +63,9 @@
 	     <nav>
 	        <ul>
 	            <li><a href="createTrip.jsp">Create Trip</a></li>
-	            <%-- View Trips button with action to run back-end first--%>
-	            <li><form action="TripViewServlet" method="post">
-    			<button type="submit">View My Trips</button>
-				</form></li>
+	            <li>
+                    <button type="button" onclick="fetchTrips()">View My Trips</button>
+        		</li>
 	            <li><button onclick="slideoutPanel()">Currency Converter</button></li>
 	        </ul>
 	    </nav>
@@ -53,7 +74,10 @@
 	        <button onclick="closePanel()">Close</button>
 	        <iframe src="currencyConv.jsp" width="100%" height="100%"></iframe>
 	    </div>
-	
+		<section id="tripSection" style="display: none;">
+    		<div id="tripsContainer"></div>
+		</section>
+		
 	    <footer>
 	        <p>&copy; Fall 2024 Team 6 TravelPal. All rights reserved.</p>
 	    </footer>

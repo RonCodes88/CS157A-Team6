@@ -35,13 +35,6 @@ public class Auth extends HttpServlet {
 	 * @see HttpServlet#doPost(HttpServletRequest request, HttpServletResponse response)
 	 */
 	
-//	String email = request.getParameter("email");
-//	String password = request.getParameter("password");
-//	Member member = new Member(email, password);
-//	RegisterDao rDao = new RegisterDao();
-//	String result = rDao.insert(member);
-//	//Display info message on browser
-//	response.getWriter().println(result);
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		String action = request.getParameter("action");
 
