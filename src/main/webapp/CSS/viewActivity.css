@@ -1,0 +1,115 @@
+/* Reset some default styles */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    font-family: Arial, sans-serif;
+    background-color: #f4f4f9;
+    color: #333;
+}
+
+/* Container for the whole page */
+.container {
+    width: 90%; /* Allow some space around the container */
+    max-width: 1200px; /* Set a maximum width for larger screens */
+    margin: 0 auto; /* Center the container horizontally */
+    padding: 20px;
+}
+
+/* Header styling */
+h2 {
+    font-size: 2rem;
+    color: #4CAF50;
+    margin-bottom: 30px; /* Add more space below the title */
+    text-align: center; /* Center align the header */
+}
+
+/* Add Activity button styling */
+.add-activity {
+    margin-bottom: 20px;
+    text-align: center;
+}
+
+.add-activity button {
+    background-color: #4CAF50;
+    color: white;
+    border: none;
+    padding: 12px 25px;
+    cursor: pointer;
+    border-radius: 5px;
+    font-size: 1rem;
+}
+
+.add-activity button:hover {
+    background-color: #45a049;
+}
+
+/* Cards container using Flexbox */
+.cards {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 20px; /* Space between the cards */
+    justify-content: center; /* Center the cards horizontally */
+}
+
+/* Individual activity card */
+.card {
+    background-color: white;
+    border: 1px solid #ddd;
+    border-radius: 8px;
+    width: 280px; /* Fixed width for consistency */
+    padding: 20px;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+    text-align: left; 
+    transition: transform 0.3s ease-in-out;
+}
+
+.card:hover {
+    transform: translateY(-10px);
+}
+
+.card h3 {
+    font-size: 1.5rem;
+    color: #333;
+    margin-bottom: 10px;
+}
+
+/* Activity description and price styles */
+.card p {
+    font-size: 1rem;
+    color: #555;
+    margin: 10px 0;
+}
+
+.card strong {
+    font-weight: bold;
+}
+
+/* Button for deleting activity */
+.card button {
+    background-color: #e53935;
+    color: white;
+    border: none;
+    padding: 10px 15px;
+    cursor: pointer;
+    border-radius: 5px;
+    font-size: 1rem;
+    transition: background-color 0.3s;
+    margin-top: 15px;
+    width: 100%; 
+}
+
+.card button:hover {
+    background-color: #c62828;
+}
+
+/* No activities message */
+p {
+    font-size: 1.2rem;
+    color: #666;
+    text-align: center;
+    margin-top: 20px;
+}

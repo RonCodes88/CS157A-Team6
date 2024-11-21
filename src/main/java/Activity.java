@@ -7,7 +7,6 @@ public class Activity {
     }
 
 	public Activity(int activityID, String activityName, String activityDesc, int price) {
-		super();
 		this.activityID = activityID;
 		this.activityName = activityName;
 		this.activityDesc = activityDesc;

@@ -92,7 +92,7 @@ public class TripViewServlet extends HttpServlet
 	        tripData.add(map);
 	    }
 	    
-	    System.out.println(tripData);
+	    //System.out.println(tripData);
 
 	    // Set attribute with the trip data
 	    request.setAttribute("tripData", tripData);

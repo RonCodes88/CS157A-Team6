@@ -62,7 +62,4 @@ public class ActivityServlet extends HttpServlet
             response.getWriter().println("Failed to link the activity to your trip. Please try again.");
         }
     }
-    
-    
-    
 }
