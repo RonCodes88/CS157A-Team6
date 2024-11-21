@@ -93,18 +93,8 @@
 
 
 				<div class="button-container">
-					<form action="createActivity.jsp" method="post"
-						style="display: inline;">
-						<input type="hidden" name="tripID"
-							value="<%=trip.get("tripID")%>">
-						<button type="submit" style="color: blue">Add Activity</button>
-					</form>
-					
-					
-
-					<a href="createActivity.jsp">
-						<button class="add-edit-activities">Add/Edit Activities</button>
-					</a>
+					<a href="ActivityViewServlet?tripID=<%= trip.get("tripID") %>"
+						class="view-activity-details"> View Activities </a>
 
 					<button class="view-trip-details">View Trip Details</button>
 
