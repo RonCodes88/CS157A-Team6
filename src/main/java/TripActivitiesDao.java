@@ -30,5 +30,24 @@ public class TripActivitiesDao {
 	    	return false;
 	    }
 	}
+	
+    public boolean deleteActivityFromTrip(int ActivityID, int TripID) {
+        connectionManager.loadDriver();
+        Connection con = connectionManager.getConnection();
+
+        try {
+            String deleteActivityFromTripSql = "DELETE FROM createcustomactivities WHERE ActivityID = ? AND TripID = ?";
+            PreparedStatement deleteActivityPs = con.prepareStatement(deleteActivityFromTripSql);
+            deleteActivityPs.setInt(1, ActivityID);
+            deleteActivityPs.setInt(2, TripID);
+
+            int rowsAffected = deleteActivityPs.executeUpdate();
+            return rowsAffected > 0;
+        } catch (SQLException e) {
+            e.printStackTrace();
+            return false;
+        }
+    }
+	
 	    
 }
