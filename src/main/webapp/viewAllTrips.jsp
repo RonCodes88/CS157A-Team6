@@ -95,13 +95,13 @@
 				<div class="button-container">
 					<a href="ActivityViewServlet?tripID=<%= trip.get("tripID") %>"
 						class="view-activity-details"> View Activities </a>
+						
+					<a href="TripDetailsServlet?tripID=<%= trip.get("tripID") %>"
+						class="view-activity-details"> View Trip Details </a>
+						
+					<a href="TripEditServlet?tripID=<%= trip.get("tripID") %>"
+						class="view-activity-details"> Edit Trip </a>
 
-					<button class="view-trip-details">View Trip Details</button>
-
-					<form action="EditTripServlet" method="get"
-						style="display: inline;">
-						<button type="submit" class="edit-trip">Edit Trip</button>
-					</form>
 				</div>
 			</div>
 			<%
@@ -118,4 +118,3 @@
 	</div>
 </body>
 </html>
-
