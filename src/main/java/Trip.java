@@ -2,14 +2,15 @@ import java.time.LocalDate;
 public class Trip
 {
 	private String startLocation, destination, flightClass, airline;
-	private int duration, budget, numOfTravelers;
+	private int tripID, duration, budget, numOfTravelers;
 	private LocalDate startDate, endDate;
 
 	public Trip() {
 		super();
 	}
 	
-	public Trip(String startLocation, String destination, int duration, int budget, int numOfTravelers, String flightClass, String airline, LocalDate startDate, LocalDate endDate) {
+	public Trip(int tripID, String startLocation, String destination, int duration, int budget, int numOfTravelers, String flightClass, String airline, LocalDate startDate, LocalDate endDate) {
+		this.tripID = tripID;
 		this.startLocation = startLocation;
 		this.destination = destination;
 		this.duration = duration;
@@ -19,6 +20,14 @@ public class Trip
 		this.airline = airline;
 		this.startDate = startDate;
 		this.endDate = endDate;
+	}
+
+	public int getTripID() {
+		return tripID;
+	}
+
+	public void setTripID(int tripID) {
+		this.tripID = tripID;
 	}
 
 	public String getStartLocation() {
