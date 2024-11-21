@@ -2,9 +2,9 @@ public class Activity {
 	private String activityName, activityDesc;
 	private int price;
 
-	public Activity() {
-		super();
-	}
+  public Activity() {
+        super();
+    }
 
 	public Activity(String activityName, String activityDesc, int price) {
 		super();
@@ -38,3 +38,4 @@ public class Activity {
 	}
 
 }
+
