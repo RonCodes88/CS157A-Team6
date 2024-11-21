@@ -7,17 +7,17 @@ import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 
 /*
- * Servlet implementation for CustomActivityCreation, connecting the createCustomActivity.jsp and CustomActivityDao
+ * Servlet implementation for ActivityServlet, connecting the createActivity.jsp and ActivityDao
  */
-@WebServlet("/CustomActivityCreation")
-public class CustomActivityCreation extends HttpServlet 
+@WebServlet("/ActivityServlet")
+public class ActivityServlet extends HttpServlet 
 {
     private static final long serialVersionUID = 1L;
 
     /**
      * @see HttpServlet#HttpServlet()
      */
-    public CustomActivityCreation() {
+    public ActivityServlet() {
         super();
     }
 
@@ -42,13 +42,11 @@ public class CustomActivityCreation extends HttpServlet
         String activityName = request.getParameter("activityName");
         String activityDesc = request.getParameter("activityDesc");
         int price = Integer.parseInt(request.getParameter("price"));
-        
 
-        // Create a CustomActivity given from inputed values 
-        CustomActivity customActivity = new CustomActivity(activityName, activityDesc, price);
-        CustomActivityDao customActivityDao = new CustomActivityDao();
-        int activityId = customActivityDao.addCustomActivity(customActivity);
-        
+        // Create an Activity object from the input values
+        Activity activity = new Activity(activityName, activityDesc, price);
+        ActivityDao activityDao = new ActivityDao();
+        int activityId = activityDao.addActivity(activity); 
         
         // Add activity to CreateCustomActivities to Associate the Activity with the Trip *NOT IMPLEMENTED YET*
         //CreateCustomActivitiesDao createCustomActivitiesDao = new CreateCustomActivitiesDao();

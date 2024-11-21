@@ -1,14 +1,12 @@
-public class CustomActivity {
+public class Activity {
 	private String activityName, activityDesc;
 	private int price;
-	
-	
-	
-    public CustomActivity() {
-        super();
-    }
 
-	public CustomActivity(String activityName, String activityDesc, int price) {
+	public Activity() {
+		super();
+	}
+
+	public Activity(String activityName, String activityDesc, int price) {
 		super();
 		this.activityName = activityName;
 		this.activityDesc = activityDesc;
@@ -39,8 +37,4 @@ public class CustomActivity {
 		this.price = price;
 	}
 
-
-
-    
 }
-
