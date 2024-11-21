@@ -1,10 +1,8 @@
 public class Activity {
 	private String activityName, activityDesc;
 	private int price;
-	
-	
-	
-    public Activity() {
+
+  public Activity() {
         super();
     }
 
@@ -39,8 +37,5 @@ public class Activity {
 		this.price = price;
 	}
 
-
-
-    
 }
 

@@ -10,7 +10,6 @@ public class Trip
 	}
 	
 	public Trip(String startLocation, String destination, int duration, int budget, int numOfTravelers, String flightClass, String airline, LocalDate startDate, LocalDate endDate) {
-		super();
 		this.startLocation = startLocation;
 		this.destination = destination;
 		this.duration = duration;

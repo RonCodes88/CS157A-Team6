@@ -80,7 +80,6 @@ public class TripViewServlet extends HttpServlet
 	        Map<String, Object> map = new HashMap<>();
 	        map.put("startLocation", trip.getStartLocation());
 	        map.put("destination", trip.getDestination());
-	        System.out.println(trip.getDestination());
 	        map.put("duration", trip.getDuration());
 	        map.put("budget", trip.getBudget());
 	        map.put("travelers", trip.getNumOfTravelers());
