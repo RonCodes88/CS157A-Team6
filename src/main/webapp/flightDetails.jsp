@@ -37,7 +37,7 @@
     <h2>Here are the available flights</h2>
 
     <%
-    JSONObject flightsData = (JSONObject) request.getAttribute("flightsData");
+    JSONObject flightsData = (JSONObject) session.getAttribute("flightsData");
     JSONArray bestFlightsArray = flightsData.optJSONArray("best_flights");
     JSONArray otherFlightsArray = flightsData.optJSONArray("other_flights");
     if (flightsData != null && (bestFlightsArray != null || otherFlightsArray != null) ) {
@@ -171,7 +171,7 @@
         }
     } else {
 %>
-    <p>No flights data received. Please try again.</p>
+    <p>No flights found based on the search criteria. Please try again.</p>
 <%
     }
 %>
