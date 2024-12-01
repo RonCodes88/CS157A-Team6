@@ -61,69 +61,49 @@ public class TripCreationServlet extends HttpServlet
 	        return;
 	    }
 	    
-	    UserDao userDao = new UserDao();
-	    int userId = userDao.getUserIdByEmail(userEmail);	    
-		String startLocation = request.getParameter("startLocation");
-		String destination = request.getParameter("destination");
-		int duration = Integer.parseInt(request.getParameter("duration")); 
-		int budget = Integer.parseInt(request.getParameter("budget"));
-		int numTravelers = Integer.parseInt(request.getParameter("numTravelers"));
-		String flightClass = request.getParameter("flightClass");
-	    String airline = getAirlineCode(request.getParameter("airline"));
-	    LocalDate departureDate = LocalDate.parse(request.getParameter("departureDate"));
-	    LocalDate returnDate = LocalDate.parse(request.getParameter("returnDate"));
-	    
-	    String startIATA = null;
-		try {
-			startIATA = getAirportCode(startLocation);
-			System.out.println(startIATA);
-		} catch (IOException | InterruptedException e) {
-			// TODO Auto-generated catch block
-			e.printStackTrace();
-		}
-        String destinationIATA = null;
-		try {
-			destinationIATA = getAirportCode(destination);
-		    System.out.println(destinationIATA);
-		} catch (IOException | InterruptedException e) {
-			// TODO Auto-generated catch block
-			e.printStackTrace();
-		}
+	    String startLocation = request.getParameter("startLocation");
+        String destination = request.getParameter("destination"); 
+        int duration = Integer.parseInt(request.getParameter("duration"));
+        int budget = Integer.parseInt(request.getParameter("budget"));
+        int numTravelers = Integer.parseInt(request.getParameter("numTravelers"));
+        String flightClass = request.getParameter("flightClass");
+        String airline = getAirlineCode(request.getParameter("airline"));
+        LocalDate departureDate = LocalDate.parse(request.getParameter("departureDate"));
+        LocalDate returnDate = LocalDate.parse(request.getParameter("returnDate"));
         
-		// Create trip given from inputed values
-		Trip trip = new Trip(0, startLocation, destination, duration, budget, numTravelers, flightClass, airline, departureDate, returnDate);
-		TripDao tripDao = new TripDao();
-		int tripId = tripDao.addTrip(trip);
-		
-		//Adds trip to UserTrips table to associate the Trip with the User
-		UserTripsDao userTripsDao = new UserTripsDao();
-		boolean isTripAdded = userTripsDao.addUserTrip(userId, tripId);
-		
-		if (isTripAdded && startIATA != null && destinationIATA != null) {
-			try {
-				JSONObject flightsData = getFlights(startIATA, destinationIATA, departureDate, returnDate, flightClass, airline, budget);
-//				FlightDao flightDao = new FlightDao();
-				
-//				int firstFlightIDSaved = flightDao.getNextMaxFlightID();
-				saveFlightsIntoDB(flightsData, departureDate, returnDate);
-				
-//				List<Flight> flights = displayFlightsFromDB(firstFlightIDSaved);
-				request.setAttribute("flightsData", flightsData);
-				request.getSession().setAttribute("TripID", tripId);
-				RequestDispatcher dispatcher = request.getRequestDispatcher("/flightDetails.jsp");
-				dispatcher.forward(request, response);
-			} catch (IOException e) {
-				// TODO Auto-generated catch block
-				e.printStackTrace();
-			} catch (InterruptedException e) {
-				// TODO Auto-generated catch block
-				e.printStackTrace();
-			}
-	        response.getWriter().println("Trip created and added to your account successfully.");
-	        
-	    } else {
-	        response.getWriter().println("Failed to add the trip to your account. Please try again.");
-	    }
+	    response.sendRedirect("flightsLoading.jsp");
+	    
+	    new Thread(() -> {
+	        try {
+	            UserDao userDao = new UserDao();
+	            int userId = userDao.getUserIdByEmail(userEmail);
+	            
+	            String startIATA = getAirportCode(startLocation);
+	            String destinationIATA = getAirportCode(destination);
+
+	            // Create trip given input values
+	            Trip trip = new Trip(0, startLocation, destination, duration, budget, numTravelers, flightClass, airline, departureDate, returnDate);
+	            TripDao tripDao = new TripDao();
+	            int tripId = tripDao.addTrip(trip);
+
+	            // Add the trip to the UserTrips table to associate the trip with the user
+	            UserTripsDao userTripsDao = new UserTripsDao();
+	            boolean isTripAdded = userTripsDao.addUserTrip(userId, tripId);
+
+	            if (isTripAdded && startIATA != null && destinationIATA != null) {
+	                JSONObject flightsData = getFlights(startIATA, destinationIATA, departureDate, returnDate, flightClass, airline, budget);
+	                saveFlightsIntoDB(flightsData, departureDate, returnDate);
+	                session.setAttribute("flightsData", flightsData);
+	                session.setAttribute("TripID", tripId);
+	                session.setAttribute("isFlightProcessingComplete", true);
+	            } else {
+	                System.out.println("Failed to add the trip to your account. Please try again.");
+	            }
+	        } catch (Exception e) {
+	            e.printStackTrace();
+				System.out.println("Error processing your request. Please try again.");
+	        }
+	    }).start();
 	}	
 	
 	private String getAirportCode(String location) throws IOException, InterruptedException {

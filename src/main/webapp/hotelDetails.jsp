@@ -19,7 +19,7 @@
     <h2>Here are the available hotels</h2>
 
     <% 
-    JSONObject hotelsData = (JSONObject) request.getAttribute("hotelsData");
+    JSONObject hotelsData = (JSONObject) session.getAttribute("hotelsData");
     JSONArray propertiesArray = hotelsData.optJSONArray("properties");
     if (hotelsData != null && propertiesArray != null) {
         try {

@@ -1,0 +1,78 @@
+@charset "UTF-8";
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+/* Set up the body to fill the screen */
+body, html {
+    height: 100%;
+    margin: 0;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    font-family: Arial, sans-serif;
+    background-color: #A0B1E1;
+}
+
+/* Create the loading screen container */
+.loading-screen {
+    display: flex;
+    flex-direction: column; /* Stack elements vertically */
+    justify-content: center;
+    align-items: center;
+    text-align: center;
+    gap: 30px; /* Adds space between elements */
+    animation: fadeIn 2s ease-in-out;
+}
+
+/* Hotel animation */
+.hotel-container {
+	margin-bottom: 10px;
+    font-size: 4rem;
+    animation: fly 4s linear infinite, spin 2s linear infinite;
+}
+
+/* HTML: <div class="loader"></div> */
+.loader {
+  --s: 64px;
+  width: var(--s);
+  aspect-ratio: 2;
+  --_g: #000 90%,#0000;
+  background: 
+    radial-gradient(farthest-side at bottom,var(--_g)) 0    calc(50% - var(--s)/16),
+    radial-gradient(farthest-side at top   ,var(--_g)) 0    calc(50% + var(--s)/16),
+    radial-gradient(farthest-side at bottom,var(--_g)) 50%  calc(50% - var(--s)/16),
+    radial-gradient(farthest-side at top   ,var(--_g)) 50%  calc(50% + var(--s)/16),
+    radial-gradient(farthest-side at bottom,var(--_g)) 100% calc(50% - var(--s)/16),
+    radial-gradient(farthest-side at top   ,var(--_g)) 100% calc(50% + var(--s)/16);
+  background-size: 25% 25%;
+  background-repeat: no-repeat;
+  animation: l13 1s infinite linear;
+}
+@keyframes l13 {
+    16.67% {background-position:0 0,0 100%,50% calc(50% - var(--s)/8),50% calc(50% + var(--s)/16),100% calc(50% - var(--s)/16),100% calc(50% + var(--s)/16)}
+    33.33% {background-position:0 0,0 100%,50% 0,50% 100%,100% calc(50% - var(--s)/16),100% calc(50% + var(--s)/16)}
+    50%    {background-position:0 0,0 100%,50% 0,50% 100%,100% 0,100% 100%}
+    66.67% {background-position:0 calc(50% - var(--s)/16),0 calc(50% + var(--s)/16),50% 0,50% 100%,100% 0,100% 100%}
+    83.33% {background-position:0 calc(50% - var(--s)/16),0 calc(50% + var(--s)/16),50% calc(50% - var(--s)/16),50% calc(50% + var(--s)/16),100% 0,100% 100%}
+}
+
+/* Fade-in effect for the entire loading screen */
+@keyframes fadeIn {
+    0% {
+        opacity: 0;
+    }
+    100% {
+        opacity: 1;
+    }
+}
+
+/* Style the text */
+p {
+    font-size: 20px; /* Slightly larger text for better readability */
+    color: #333;
+    margin-top: 10px;
+}
