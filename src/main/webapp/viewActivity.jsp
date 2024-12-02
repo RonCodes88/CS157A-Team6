@@ -14,16 +14,16 @@
         <h2 style="text-align: center; margin-top: 20px;">Activities On My Trip</h2>
 
         <div style="text-align: center; margin-bottom: 20px;">
-            <form action="createActivity.jsp" method="post" style="display: inline;">
+            <form action="createActivity.jsp" method="post">
                 <input type="hidden" name="tripID" value="<%=request.getAttribute("tripId")%>">
                 <button type="submit">Add Activity</button>
             </form>
         </div>
         
          <div style="text-align: center; margin-bottom: 20px;">
-            <form action="createActivitySuggest.jsp" method="post" style="display: inline;">
+            <form action="createActivitySuggest.jsp" method="post">
                 <input type="hidden" name="tripID" value="<%=request.getAttribute("tripId")%>">
-                <button type="submit">Use TravelAI to Suggest Activity!!</button>
+                <button type="submit">Use TravelAI to Suggest Activity</button>
             </form>
         </div>
         

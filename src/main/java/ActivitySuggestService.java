@@ -21,7 +21,7 @@ public class ActivitySuggestService {
 		HttpClient client = HttpClient.newHttpClient();
 
 		// Construct the JSON payload
-		String prompt = "Generate 5 travel activities for the location: " + location
+		String prompt = "Generate 9 travel activities for the location: " + location
 				+ ". Include activity name, description, and price (no range, with dollar sign symbol) for each activity. Return Json. Be concise. Please follow the format of-> Activity Name: Price: Activity Description:";
 		JSONObject content = new JSONObject().put("text", prompt);
 		JSONObject requestBody = new JSONObject();
