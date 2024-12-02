@@ -15,13 +15,19 @@
         <p><strong>Start Location:</strong> ${trip.startLocation}</p>
 		<p><strong>Destination:</strong> ${trip.destination}</p>
 		<p><strong>Duration:</strong> ${trip.duration} days</p>
-		<p><strong>Budget:</strong> $${trip.budget}</p>
+		<p><strong>Flight Budget:</strong> $${trip.budget}</p>
 		<p><strong>Number of Travelers:</strong> ${trip.numOfTravelers}</p>
 		<p><strong>Flight Class:</strong> ${trip.flightClass}</p>
 		<p><strong>Airline:</strong> ${trip.airline}</p>
 		<p><strong>Start Date:</strong> ${trip.startDate}</p>
 		<p><strong>End Date:</strong> ${trip.endDate}</p>
-
+		<p><strong>Hotel Name:</strong> ${hotel.hotelName}</p>
+		<p><strong>Hotel Price:</strong> $${hotel.price}</p>
+		<p><strong>Check-in Date:</strong> ${hotel.checkInDate}</p>
+		<p><strong>Check-out Date:</strong> ${hotel.checkOutDate}</p>
+		<p><strong>Room Type:</strong> ${hotel.roomType}</p>
+		<p><strong>Special Requests:</strong> ${hotel.specialRequests}</p>
+	
         <div class="links">
             <a href="dashboard.jsp" class="btn">Back to Dashboard</a>
         </div>
