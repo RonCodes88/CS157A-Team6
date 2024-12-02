@@ -1,0 +1,82 @@
+/* General styles */
+body {
+    font-family: Arial, sans-serif;
+    margin: 0;
+    padding: 0;
+    background-color: #f4f4f9;
+    color: #333;
+}
+
+h3 {
+    margin: 0;
+    font-size: 1.5em;
+    color: #0073e6;
+}
+
+p {
+    font-size: 1em;
+    color: #555;
+}
+
+/* Cards container */
+.cards {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+    gap: 20px;
+    padding: 20px;
+    max-width: 1200px;
+    margin: 0 auto;
+}
+
+/* Individual card */
+.card {
+    background-color: #fff;
+    border: 1px solid #ddd;
+    border-radius: 8px;
+    padding: 20px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+.card:hover {
+    transform: translateY(-10px);
+    box-shadow: 0 8px 16px rgba(0, 0, 0, 0.2);
+}
+
+/* Button styles */
+button {
+    background-color: #0073e6;
+    color: white;
+    font-size: 1em;
+    padding: 10px 20px;
+    border: none;
+    border-radius: 4px;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+}
+
+button:hover {
+    background-color: #005bb5;
+}
+
+/* Input hidden fields for form */
+input[type="hidden"] {
+    display: none;
+}
+
+/* Activity details */
+.card p {
+    margin-bottom: 10px;
+}
+
+.card form {
+    margin-top: 10px;
+}
+
+/* No activities message */
+.no-activities {
+    text-align: center;
+    font-size: 1.2em;
+    color: #777;
+    padding: 20px;
+}

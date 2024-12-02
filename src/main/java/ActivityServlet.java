@@ -57,7 +57,7 @@ public class ActivityServlet extends HttpServlet
         
         if (isActivityLinked) {
             response.getWriter().println("Activity created and linked to your trip successfully.");
-            response.sendRedirect("dashboard.jsp");
+            response.sendRedirect("ActivityViewServlet?tripID=" + tripId);
         } else {
             response.getWriter().println("Failed to link the activity to your trip. Please try again.");
         }
