@@ -21,15 +21,18 @@ public class TripDetailsServlet extends HttpServlet {
     }
 
     protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-        String tripIDParam = request.getParameter("tripID");
-        
-        if (tripIDParam != null && !tripIDParam.isEmpty()) {
+        int tripID = Integer.parseInt(request.getParameter("tripID"));
+        System.out.println("tripID: " + tripID);
             try {
-                int tripID = Integer.parseInt(tripIDParam);
                 Trip trip = getTripFromDatabase(tripID);
+                System.out.println("trip id: " + tripID);
+                int hotelID = getHotelIDFromDatabase(tripID);
+                Hotel hotel = getHotelFromDatabase(hotelID);
+                
                 if (trip != null) {
-                    System.out.println("trip id: " + trip);
+                    System.out.println("trip: " + trip);
                     request.setAttribute("trip", trip);
+                    request.setAttribute("hotel", hotel);
                     RequestDispatcher dispatcher = request.getRequestDispatcher("/viewTrip.jsp");
                     dispatcher.forward(request, response);
                 } else {
@@ -38,9 +41,6 @@ public class TripDetailsServlet extends HttpServlet {
             } catch (NumberFormatException e) {
                 response.getWriter().append("Incorrect trip ID format.");
             }
-        } else {
-            response.getWriter().append("No trip ID provided. Please try agaian.");
-        }
     }
 
     private Trip getTripFromDatabase(int tripID) {
@@ -81,10 +81,81 @@ public class TripDetailsServlet extends HttpServlet {
 
         return trip;
     }
+    
+    private int getHotelIDFromDatabase(int tripID) {
+        String sql = "SELECT hotelID FROM tripselecthotels WHERE tripID = ?";
+        int hotelID = 0;
+        try (Connection conn = connectionManager.getConnection();
+             PreparedStatement stmt = conn.prepareStatement(sql)) {
+
+            stmt.setInt(1, tripID);  // Set the tripID parameter in the SQL query
+            System.out.println("Executing query: " + sql);  // Log the SQL query being executed
+
+            try (ResultSet rs = stmt.executeQuery()) {
+                if (rs.next()) {
+                    hotelID = rs.getInt("HotelID");
+                    System.out.println("Found hotel with hotelID: " + hotelID);
+                } else {
+                    System.out.println("No hotel found with tripID: " + tripID);  // If no trip found
+                }
+            }
+
+        } catch (SQLException e) {
+            System.out.println("SQL error: " + e.getMessage());
+            e.printStackTrace();
+        }
+
+        return hotelID;
+    }
+    
+    private Hotel getHotelFromDatabase(int hotelID) {
+        Hotel hotel = null;
+        String sql = "SELECT * FROM hotels WHERE hotelID = ?";
+
+        try (Connection conn = connectionManager.getConnection();
+             PreparedStatement stmt = conn.prepareStatement(sql)) {
+
+            stmt.setInt(1, hotelID);  // Set the hotelID parameter in the SQL query
+            System.out.println("Executing query: " + sql);  // Log the SQL query being executed
+
+            try (ResultSet rs = stmt.executeQuery()) {
+                if (rs.next()) {
+                    // Create a Hotel object using data from the ResultSet
+                    hotel = new Hotel(
+                    	    rs.getInt("HotelID"),
+                    	    rs.getString("HotelName"),
+                    	    rs.getDate("CheckinDate").toLocalDate(),
+                    	    rs.getDate("CheckoutDate").toLocalDate(),
+                    	    rs.getInt("Price"),
+                    	    rs.getString("destination"),
+                    	    rs.getInt("budget"),
+                    	    rs.getInt("numOfPeople"),
+                    	    rs.getString("roomType"),
+                    	    rs.getString("specialRequests"),
+                    	    rs.getString("checkInTime"),
+                    	    rs.getString("checkOutTime"),
+                    	    rs.getString("overallRating"),
+                    	    rs.getString("hotelClass"),
+                    	    rs.getString("hotelLink"),
+                    	    rs.getString("Image")
+                    	);
+
+                    System.out.println("Hotel found: " + hotel);  // Log the found trip
+                } else {
+                    System.out.println("No hotel found with hotelID: " + hotelID);  // If no trip found
+                }
+            }
+
+        } catch (SQLException e) {
+            System.out.println("SQL error: " + e.getMessage());
+            e.printStackTrace();
+        }
+
+        return hotel;
+    }
 
 
     protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
         doGet(request, response);
     }
 }
-

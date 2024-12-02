@@ -1,7 +1,7 @@
-/* General body styling */
+
 body {
-	font-family: 'Arial', sans-serif;
-	background-color: #A0B1E1;
+ 	font-family: Roboto, sans-serif;
+	background-color: #caf0f8;
 	margin: 0;
 	padding: 0;
 	color: #333;
@@ -9,7 +9,7 @@ body {
 
 /* Page title styling */
 h2 {
-	color: #FFFFFF;
+	color: #0077B6;
 	font-size: 2.5em;
 	margin-top: 20px;
 	text-align: center;
@@ -34,8 +34,15 @@ h2 {
 	padding: 20px;
 	transition: transform 0.3s ease, box-shadow 0.3s ease;
 	color: #333;
+	display: flex; /* Enables flexbox */
+	flex-direction: column; /* Stacks content vertically */
+	justify-content: space-between; /* Ensures spacing between content */
 	position: relative;
-}
+	margin-top: 20px;
+	word-wrap: break-word; /* Breaks long words to fit within the card */
+    overflow-wrap: break-word; /* Ensures words are wrapped when necessary */
+    white-space: normal; /* Allows text to wrap naturally */
+}	
 
 .activity-card:hover {
 	transform: translateY(-10px);
@@ -46,7 +53,7 @@ h2 {
 .activity-title {
 	font-size: 1.8em;
 	font-weight: bold;
-	color: #333;
+	color: #0073e6;
 	margin-bottom: 10px;
 }
 
@@ -63,14 +70,14 @@ h2 {
 
 /* Delete button styling */
 .delete-btn {
-	background-color: #E63946;
+	background-color: #0073e6;
 	color: #FFF;
 	border: none;
 	padding: 10px 15px;
 	font-size: 1em;
 	border-radius: 8px;
 	cursor: pointer;
-	margin-top: 10px;
+	margin-top: auto; /* Pushes the button to the bottom */
 	transition: background-color 0.3s ease, transform 0.2s ease;
 }
 
@@ -80,21 +87,24 @@ h2 {
 }
 
 /* Centered form for "Add Activity" */
-form[action="createActivity.jsp"] button {
-	background-color: #4CAF50;
-	border: none;
-	color: #FFF;
-	font-size: 1em;
-	padding: 10px 20px;
-	border-radius: 8px;
-	cursor: pointer;
-	transition: background-color 0.3s ease, transform 0.2s ease;
+form[action="createActivity.jsp"] button,
+form[action="createActivitySuggest.jsp"] button {
+    background-color: #0073e6;
+    border: none;
+    color: #FFF;
+    font-size: 1em;
+    padding: 10px 20px;
+    border-radius: 8px;
+    cursor: pointer;
+    transition: background-color 0.3s ease, transform 0.2s ease;
 }
 
-form[action="createActivity.jsp"] button:hover {
-	background-color: #45A049;
-	transform: scale(1.05);
+form[action="createActivity.jsp"] button:hover,
+form[action="createActivitySuggest.jsp"] button:hover {
+    background-color: #005bb5;
+    transform: scale(1.05);
 }
+
 
 /* Responsive grid adjustments */
 @media ( max-width : 768px) {

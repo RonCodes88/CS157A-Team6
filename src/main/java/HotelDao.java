@@ -66,7 +66,7 @@ public class HotelDao {
             addHotelPs.setString(2, hotel.getHotelName());
             addHotelPs.setObject(3, Date.valueOf(hotel.getCheckInDate()));
             addHotelPs.setObject(4, Date.valueOf(hotel.getCheckOutDate()));
-            addHotelPs.setDouble(5, hotel.getPrice());
+            addHotelPs.setInt(5, hotel.getPrice());
             addHotelPs.setString(6, hotel.getDestination());
             addHotelPs.setInt(7, hotel.getBudget());
             addHotelPs.setInt(8, hotel.getNumOfPeople());

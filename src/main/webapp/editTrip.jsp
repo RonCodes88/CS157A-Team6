@@ -11,6 +11,8 @@
 </head>
 
 <body>
+	<jsp:include page="navbar.jsp" />
+	
     <div class="container">
         <h2>Edit Trip Details</h2>
         <form action="TripEditServlet" method="post">
@@ -53,6 +55,8 @@
         </div>
     </div>
 
+	<jsp:include page="footer.jsp" />
+	
 </body>
 </html>
 
