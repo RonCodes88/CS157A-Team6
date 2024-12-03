@@ -78,7 +78,7 @@ public class Hotel {
         this.checkOutDate = checkOutDate;
     }
 
-    public double getPrice() {
+    public int getPrice() {
         return price;
     }
 
