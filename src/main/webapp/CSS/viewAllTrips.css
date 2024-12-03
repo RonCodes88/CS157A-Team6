@@ -1,0 +1,231 @@
+@charset "UTF-8";
+
+body {
+  margin: 0;
+  font-family: Arial, sans-serif;
+  background-color: #f0f8ff; /* Light blue background */
+  color: #333;
+}
+
+header {
+  background-color: #A0B1E1; /* Custom blue header */
+  color: white;
+  text-align: center;
+  padding: 20px 0;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+}
+
+header h1 {
+  margin: 0;
+  font-size: 2.5rem;
+  font-weight: bold;
+}
+
+nav {
+  background-color: #4CAF50;
+  padding: 15px;
+  text-align: center;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+}
+
+nav ul {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+}
+
+nav ul li {
+  display: inline;
+  margin-right: 20px;
+}
+
+nav ul li a {
+  text-decoration: none;
+  color: white;
+  font-weight: bold;
+  font-size: 1.2rem;
+  transition: color 0.3s ease;
+}
+
+nav ul li a:hover {
+  color: #f0f8ff; /* Lighter blue on hover */
+}
+
+footer {
+  background-color: #A0B1E1; /* Same custom blue as header */
+  color: white;
+  text-align: center;
+  padding: 10px 0;
+  position: fixed;
+  bottom: 0;
+  width: 100%;
+  box-shadow: 0 -4px 8px rgba(0, 0, 0, 0.1);
+}
+
+footer p {
+  margin: 0;
+  font-size: 0.9rem;
+}
+
+#slideoutPanel {
+  position: fixed;
+  top: 0;
+  right: -300px;
+  width: 300px;
+  height: 100%;
+  background-color: white;
+  transition: right 0.3s ease;
+}
+
+#slideoutPanel.open {
+  right: 0;
+  width: 500px;
+  background-color: #A0B1E1;
+  border-radius: 10px;
+  box-shadow: 10px 10px 20px black;
+}
+
+button {
+  cursor: pointer;
+  padding: 5px;
+  border: none;
+  background: none;
+  color: white;
+  font-weight: bold;
+  font-size: 1.2rem;
+}
+
+iframe {
+  border: none;
+}
+
+/* Responsive Design */
+@media (max-width: 768px) {
+  nav ul li {
+    display: block;
+    margin: 10px 0;
+  }
+
+  header h1 {
+    font-size: 2rem;
+  }
+}
+
+.container {
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 20px;
+}
+
+h2 {
+  text-align: center;
+  color: #333;
+}
+
+.cards {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 20px;
+  justify-content: center;
+}
+
+.card {
+  background-color: #fff;
+  border: 1px solid #ddd;
+  border-radius: 8px;
+  padding: 20px;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+  max-width: 300px;
+  flex: 1 1 calc(33.333% - 40px);
+  margin: 10px;
+}
+
+.card h3 {
+  font-size: 1.25rem;
+  margin-bottom: 10px;
+  color: #555;
+}
+
+.card p {
+  font-size: 0.9rem;
+  margin: 5px 0;
+  color: #666;
+}
+
+.card form {
+  margin-top: 10px;
+  text-align: center;
+}
+
+/* Button container inside card */
+.button-container {
+  display: flex;
+  justify-content: space-between;
+  margin-top: 15px;
+  gap: 10px; /* Space between buttons */
+  flex-wrap: wrap;
+  justify-content: center;
+}
+
+/* Common button styles */
+.button-container button {
+  padding: 10px 20px;
+  border: none;
+  font-size: 1rem; /* Adjusted button text size */
+  cursor: pointer;
+  border-radius: 4px;
+  font-weight: bold;
+  transition: background-color 0.3s ease;
+  margin: 5px 0; /* Vertical spacing between buttons */
+  text-align: center;
+  width: 100%; /* Makes the buttons fill up the container */
+  max-width: 200px; /* Optional: Limit button size */
+}
+
+/* Light green button for Add/Edit Activities */
+.add-edit-activities {
+  background-color: #90EE90;
+  color: #333;
+}
+
+.add-edit-activities:hover {
+  background-color: #76c776; /* Darker green on hover */
+}
+
+/* Light blue button for View Trip Details */
+.view-trip-details {
+  background-color: #ADD8E6;
+  color: #333;
+}
+
+.view-trip-details:hover {
+  background-color: #87ceeb; /* Darker blue on hover */
+}
+
+/* Light purple button for Edit Trip */
+.edit-trip {
+  background-color: #D8BFD8;
+  color: #333;
+}
+
+.edit-trip:hover {
+  background-color: #d1a3d1; /* Darker purple on hover */
+}
+
+
+.view-activity-details {
+    background-color: #ADD8E6;
+    color: #333;
+    padding: 10px 20px;
+    text-decoration: none;
+    font-size: 1rem;
+    font-weight: bold;
+    border-radius: 4px;
+    display: inline-block;
+    text-align: center;
+    transition: background-color 0.3s ease;
+}
+
+.view-activity-details:hover {
+    background-color: #87ceeb; /* Darker blue on hover */
+}

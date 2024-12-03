@@ -72,5 +72,5 @@ public class ActivitySuggestServlet extends HttpServlet {
 			response.getWriter().println("Failed to generate suggested activities.");
 		}
 	}
-
 }
+
