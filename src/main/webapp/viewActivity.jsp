@@ -10,6 +10,7 @@
 <link rel="stylesheet" href="CSS/viewActivity.css">
 </head>
 <body>
+	<jsp:include page="navbar.jsp" />
 	<div>
 		<h2 style="text-align: center; margin-top: 20px;">Activities On
 			My Trip</h2>
@@ -68,7 +69,7 @@
 						value="<%=activity.get("activityID")%>"> <input
 						type="hidden" name="tripID"
 						value="<%=request.getAttribute("tripId")%>">
-					<button type="submit" class="delete-btn">Delete Activity</button>
+					<button type="submit" class="delete-btn" onclick="return confirm('Are you sure you want to delete this trip?')"> Delete Activity</button>
 				</form>
 
 
@@ -84,6 +85,7 @@
 			%>
 		</div>
 	</div>
+	<jsp:include page="footer.jsp" />
 </body>
 </html>
 

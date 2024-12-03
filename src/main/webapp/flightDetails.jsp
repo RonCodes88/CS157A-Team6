@@ -34,6 +34,7 @@
     </script>
 </head>
 <body>
+	<jsp:include page="navbar.jsp" />
     <h2>Here are the available flights</h2>
 
     <%
@@ -171,14 +172,17 @@
         }
     } else {
 %>
-    <p>No flights found based on the search criteria. Please try again.</p>
+   <p>No flights found based on the search criteria. Please try again.</p>
+        <form action="TripDeleteServlet" method="get" style="display:inline-block;">
+            <input type="hidden" name="tripID" value="${TripID}" />
+            <input type="submit" value="Return to Dashboard" onclick="return confirm('Are you sure you want to delete this trip?');" />
+        </form>
 <%
     }
 %>
-
+<jsp:include page="footer.jsp" />
 </body>
 </html>
-
 
 
 
