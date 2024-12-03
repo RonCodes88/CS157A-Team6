@@ -6,11 +6,8 @@
     <meta charset="UTF-8">
     <title>Create Trip</title>
     <link rel="stylesheet" href="CSS/createTrip.css" />
-    <link href="https://fonts.googleapis.com/css2?family=Julius+Sans+One&amp;family=Parkinsans:wght@300..800&amp;family=Poppins:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&amp;display=swap" rel="stylesheet"> 
 </head>
 <body>
-	<jsp:include page="navbar.jsp" />
-	
     <div class="container">
         <h2>Create a New Trip</h2>
         <h3>Let's start by entering some basic travel information...</h3>
@@ -58,8 +55,7 @@
             input.addEventListener('wheel', (event) => event.preventDefault());
         });
     </script>
-	
-	<jsp:include page="footer.jsp" />
+
 </body>
 </html>
 

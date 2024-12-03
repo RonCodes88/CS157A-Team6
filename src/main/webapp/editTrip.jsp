@@ -10,8 +10,6 @@
 </head>
 
 <body>
-	<jsp:include page="navbar.jsp" />
-	
     <div class="container">
         <h2>Edit Trip Details</h2>
         <form action="TripEditServlet" method="post">
@@ -52,27 +50,22 @@
             <input type="submit" value="Update Trip">          
         </form>
 
-        <div class="button-container">
-            <form action="viewAllTrips.jsp" method="get">
-                <input type="submit" value="Return to Trips" />
-            </form>
-            
-            <form action="TripDeleteServlet" method="get">
-                <input type="hidden" name="tripID" value="${trip.tripID}" />
-                <input type="submit" value="Delete Trip" onclick="return confirm('Are you sure you want to delete this trip?');" />
-            </form>
-        </div>
+        <form action="dashboard.jsp" method="get" style="display:inline-block;">
+            <input type="submit" value="Return to Dashboard" />
+        </form>
+        
+        <form action="TripDeleteServlet" method="get" style="display:inline-block;">
+		    <input type="hidden" name="tripID" value="${trip.tripID}" />
+		    <input type="submit" value="Delete Trip" onclick="return confirm('Are you sure you want to delete this trip?');" />
+		</form>
     </div>
     
-    <div class="wrapper">
+        <div class="wrapper">
         <div class="moving-car">
             <img src="images/Car.png" alt="Car">
         </div>
     </div>
 
-	<jsp:include page="footer.jsp" />
-	
 </body>
 </html>
-
 
