@@ -27,8 +27,8 @@
                         navbar.remove();
                     }
 
-                    const tripsContainer = document.getElementById('tripsContainer');
-                    tripsContainer.innerHTML = tempDiv.innerHTML;
+                    const container = document.getElementById('container');
+                    container.innerHTML = tempDiv.innerHTML;
 
                     const tripSection = document.getElementById('tripSection');
                     tripSection.style.display = 'block';
@@ -42,26 +42,29 @@
             fetchTrips();
         };
     </script>
-    
+
 </head>
 <body>
 	<jsp:include page="navbar.jsp" />
 	<div class="container">
-		<h2>Your Trips</h2>
+		<!-- <h2>Your Trips</h2> -->
 		<%
 		// Retrieve the list of maps from the request attribute
 		List<Map<String, Object>> trips = (List<Map<String, Object>>) request.getAttribute("tripData");
-
+		System.out.println("trips: " + trips);
+		// Check if trips is not null and not empty
 		if (trips != null && !trips.isEmpty()) {
 		%>
 		<div class="cards">
 			<%
+			// Iterate through each trip in the list
 			for (Map<String, Object> trip : trips) {
 			%>
 			<div class="card">
 				<h3><%=trip.get("startLocation")%>
 					➝
 					<%=trip.get("destination")%></h3>
+
 				<%
 				if (trip.get("duration") != null) {
 				%>
@@ -73,71 +76,79 @@
 				<%
 				}
 				%>
+
 				<%
 				if (trip.get("budget") != null) {
 				%>
 				<p>
-					<strong>Budget:</strong> $<%=trip.get("budget")%></p>
+					<strong>Budget:</strong> $<%=trip.get("budget")%>
+				</p>
 				<%
 				}
 				%>
+
 				<%
 				if (trip.get("travelers") != null) {
 				%>
 				<p>
 					<strong>Travelers:</strong>
-					<%=trip.get("travelers").toString()%></p>
+					<%=trip.get("travelers").toString()%>
+				</p>
 				<%
 				}
 				%>
+
 				<%
 				if (trip.get("flightClass") != null) {
 				%>
 				<p>
 					<strong>Flight Class:</strong>
-					<%=trip.get("flightClass")%></p>
+					<%=trip.get("flightClass")%>
+				</p>
 				<%
 				}
 				%>
+
 				<%
 				if (trip.get("airline") != null && !trip.get("airline").equals("")) {
 				%>
 				<p>
 					<strong>Airline:</strong>
-					<%=trip.get("airline")%></p>
+					<%=trip.get("airline")%>
+				</p>
 				<%
 				}
 				%>
+
 				<%
 				if (trip.get("startDate") != null) {
 				%>
 				<p>
 					<strong>Start Date:</strong>
-					<%=trip.get("startDate")%></p>
+					<%=trip.get("startDate")%>
+				</p>
 				<%
 				}
 				%>
+
 				<%
 				if (trip.get("endDate") != null) {
 				%>
 				<p>
 					<strong>End Date:</strong>
-					<%=trip.get("endDate")%></p>
+					<%=trip.get("endDate")%>
+				</p>
 				<%
 				}
 				%>
 
-
 				<div class="button-container">
-					<a href="ActivityViewServlet?tripID=<%= trip.get("tripID") %>"
-						class="view-activity-details"> View Activities </a>
-						
-					<a href="TripDetailsServlet?tripID=<%= trip.get("tripID") %>"
-						class="view-activity-details"> View Trip Details </a>
-						
-					<a href="TripEditServlet?tripID=<%= trip.get("tripID") %>"
+					<a href="ActivityViewServlet?tripID=<%=trip.get("tripID")%>"
+						class="view-activity-details"> View Activities </a> <a
+						href="TripDetailsServlet?tripID=<%=trip.get("tripID")%>"
+						class="view-activity-details"> View Trip Details </a> <a
+						href="TripEditServlet?tripID=<%=trip.get("tripID")%>"
 						class="view-activity-details"> Edit Trip </a>
-
 				</div>
 			</div>
 			<%
@@ -147,10 +158,11 @@
 		<%
 		} else {
 		%>
-		<p>No trips available yet. Create a trip!</p>
+		<!-- <p>No trips available yet. Create a trip!</p> -->
 		<%
 		}
 		%>
+
 	</div>
 	<jsp:include page="footer.jsp" />
 </body>
