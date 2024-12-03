@@ -47,6 +47,7 @@
                 }
             } else {
         %>
+
         <div class = "no-activities">
         <p>No Suggested Activities Available. Please Hit Refresh</p>
         </div>
@@ -58,3 +59,4 @@
 </div>
 </body>
 </html>
+
