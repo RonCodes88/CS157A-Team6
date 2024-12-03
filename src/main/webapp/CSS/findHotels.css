@@ -10,23 +10,22 @@ body {
 
 .container {
     width: 70%;
-    max-width: 800px;
     margin: 50px auto;
     background-color: #ffffff;
     border-radius: 8px;
-    padding: 25px 30px;
+    padding: 20px 50px 20px 30px;;
     box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
 }
 
 h2 {
-    color: #A0B1E1;
+    color: #023E8A;
     font-size: 2.2em;
     text-align: center;
     margin-bottom: 15px;
 }
 
 h3 {
-    color: #555;
+    color: black;
     font-size: 1.2em;
     text-align: center;
     margin-bottom: 30px;
@@ -49,7 +48,7 @@ input[type="text"], input[type="date"], input[type="number"], select, textarea {
     width: 100%;
     padding: 10px;
     font-size: 1em;
-    border: 2px solid #A0B1E1;
+    border: 2px solid #03045E;
     border-radius: 5px;
     outline: none;
     transition: border-color 0.3s ease-in-out;
@@ -60,13 +59,13 @@ textarea {
 }
 
 input[type="text"]:focus, input[type="date"]:focus, input[type="number"]:focus, select:focus, textarea:focus {
-    border-color: #4CAF50;
+    border-color: #0077B6;
 }
 
 input[type="submit"], button[type="submit"] {
     padding: 12px;
     font-size: 1.1em;
-    background-color: #A0B1E1;
+    background-color: #03045E;
     color: white;
     border: none;
     border-radius: 5px;
@@ -76,7 +75,7 @@ input[type="submit"], button[type="submit"] {
 }
 
 input[type="submit"]:hover, button[type="submit"]:hover {
-    background-color: #8C9CCF;
+    background-color: #03045E;
     transform: scale(1.05); /* Slightly enlarges the button on hover */
 }
 
@@ -115,4 +114,3 @@ input[type=number]::-webkit-inner-spin-button {
     -webkit-appearance: none;
     margin: 0;
 }
-
