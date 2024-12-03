@@ -159,3 +159,4 @@ public class TripDetailsServlet extends HttpServlet {
         doGet(request, response);
     }
 }
+

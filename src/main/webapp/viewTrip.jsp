@@ -10,7 +10,6 @@
     <link href="https://fonts.googleapis.com/css?family=Ubuntu" rel="stylesheet">
 </head>
 <body>
-	<jsp:include page="navbar.jsp" />
     <div class="container">
         <h2>Trip Details</h2>
         <p><strong>Start Location:</strong> ${trip.startLocation}</p>
@@ -30,7 +29,7 @@
 		<p><strong>Special Requests:</strong> ${hotel.specialRequests}</p>
 	
         <div class="links">
-            <a href="viewAllTrips.jsp" class="btn">Back to Trips</a>
+            <a href="dashboard.jsp" class="btn">Back to Dashboard</a>
         </div>
     </div>
     
@@ -39,6 +38,5 @@
             <img src="images/Plane.png" alt="Plane">
         </div>
     </div>
-    <jsp:include page="footer.jsp" />
 </body>
 </html>
