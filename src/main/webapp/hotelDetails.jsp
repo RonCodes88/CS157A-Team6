@@ -16,7 +16,6 @@
     <link rel="stylesheet" type="text/css" href="CSS/hotelDetails.css">
 </head>
 <body>
-	<jsp:include page="navbar.jsp" />
     <h2>Here are the available hotels</h2>
 
     <% 
@@ -100,6 +99,5 @@
     %>
     <p class="no-hotels-message">No hotels found based on the search criteria. Please try again.</p>
     <% } %>
-    <jsp:include page="footer.jsp" />
 </body>
 </html>
