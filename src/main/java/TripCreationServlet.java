@@ -71,6 +71,7 @@ public class TripCreationServlet extends HttpServlet
         LocalDate departureDate = LocalDate.parse(request.getParameter("departureDate"));
         LocalDate returnDate = LocalDate.parse(request.getParameter("returnDate"));
         
+        
 	    response.sendRedirect("flightsLoading.jsp");
 	    
 	    new Thread(() -> {
@@ -86,6 +87,8 @@ public class TripCreationServlet extends HttpServlet
 	            TripDao tripDao = new TripDao();
 	            int tripId = tripDao.addTrip(trip);
 
+
+	            
 	            // Add the trip to the UserTrips table to associate the trip with the user
 	            UserTripsDao userTripsDao = new UserTripsDao();
 	            boolean isTripAdded = userTripsDao.addUserTrip(userId, tripId);

@@ -9,6 +9,7 @@
 <link rel="stylesheet" href="CSS/createActivitySuggest.css">
 </head>
 <body>
+<jsp:include page="navbar.jsp" />
 	<div>
 		<h2>Suggested Activities</h2>
 		<div class="refresh">
@@ -51,6 +52,7 @@
 			%>
 		</div>
 	</div>
+	<jsp:include page="footer.jsp" />
 </body>
 </html>
 

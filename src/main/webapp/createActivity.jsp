@@ -8,6 +8,7 @@
     <link rel="stylesheet" href="CSS/createActivity.css" />
 </head>
 <body>
+<jsp:include page="navbar.jsp" />
 	<div class = "container">
 	<h2>Create an Activity</h2>
        <form action="ActivityServlet" method="post">
@@ -26,5 +27,6 @@
             <input type="submit" value="Create Activity">
         </form>
     </div>
+    <jsp:include page="footer.jsp" />
 </body>
 </html>

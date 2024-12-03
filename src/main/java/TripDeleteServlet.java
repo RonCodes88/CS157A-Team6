@@ -28,7 +28,7 @@ public class TripDeleteServlet extends HttpServlet {
                 
                 if (isDeleted) {
                     response.getWriter().append("Trip deleted successfully.");
-                    response.sendRedirect("dashboard.jsp");
+                    response.sendRedirect("viewAllTrips.jsp");
                 } else {
                     response.getWriter().append("Error: Trip not found or could not be deleted.");
                 }
@@ -36,7 +36,8 @@ public class TripDeleteServlet extends HttpServlet {
                 response.getWriter().append("Invalid trip ID.");
             }
         } else {
-            response.getWriter().append("No trip ID.");
+            response.sendRedirect("dashboard.jsp");
+            
         }
     }
 

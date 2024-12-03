@@ -8,6 +8,8 @@
     <link rel="stylesheet" href="CSS/findHotels.css" />
 </head>
 <body>
+	<jsp:include page="navbar.jsp" />
+	
     <div class="container">
         <h2>Find a hotel</h2>
         <h3>Tell us about your stay, and we’ll find the best options for you!</h3>
@@ -102,5 +104,6 @@
             input.addEventListener('wheel', (event) => event.preventDefault());
         });
     </script>
+    <jsp:include page="footer.jsp" />
 </body>
 </html>

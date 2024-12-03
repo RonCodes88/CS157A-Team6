@@ -31,6 +31,8 @@ public class TripDao
                 nextId = rs.getInt(1) + 1; // Get the max ID, 
                 						   // if it exists, and then increment on existing
             }
+            
+            
 
             // Insert trip with new trip ID
             String addTripSql = "INSERT INTO trips (TripID, StartLocation, Destination, Duration, Budget, Travelers, FlightClass, Airline, StartDate, EndDate) VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?)";
@@ -83,7 +85,9 @@ public class TripDao
     		updateTripsPs.setObject(9, trip.getEndDate());
     		updateTripsPs.setInt(10, tripID);
     		
-    		if (updateTripsPs.executeUpdate() > 0) { updated = true; }
+    		if (updateTripsPs.executeUpdate() > 0) {
+    			updated = true; 
+    			}
     		
     	} catch (SQLException e) {
     		e.printStackTrace();
