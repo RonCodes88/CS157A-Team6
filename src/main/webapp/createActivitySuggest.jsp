@@ -14,7 +14,7 @@
         <form action="ActivitySuggestServlet" method="get">
         <input type="hidden" name="tripID" value="<%= request.getParameter("tripID") %>">
         
-        <button type="submit">Refresh Suggestions</button>
+        <button type="submit" id="refresh-button" >Refresh Suggestions</button>
         </form>
         
         
@@ -35,11 +35,11 @@
             <p><strong>Price:</strong> $<%= activity.get("activityPrice") %></p>
             
          <form action="ActivitySuggestServlet" method="POST">
-         	<input type="hidden" name="tripID" value="<%= request.getParameter("tripID") %>">
+         <input type="hidden" name="tripID" value="<%= request.getParameter("tripID") %>">
             <input type="hidden" name="activityName" value="<%= activity.get("activityName") %>">
             <input type="hidden" name="activityPrice" value="<%= activity.get("activityPrice") %>">
             <input type="hidden" name="activityDesc" value="<%= activity.get("activityDescription") %>">
-            <button type="submit">Select Activity</button>
+            <button type="submit"> Select Activity</button>
         </form>
         
         </div>
@@ -47,7 +47,11 @@
                 }
             } else {
         %>
-        <p>No suggested activities available.</p>
+
+        <div class = "no-activities">
+        <p>No Suggested Activities Available. Please Hit Refresh</p>
+        </div>
+        
         <%
             }
         %>
@@ -55,3 +59,4 @@
 </div>
 </body>
 </html>
+
