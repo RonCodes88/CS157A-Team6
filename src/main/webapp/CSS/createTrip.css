@@ -1,36 +1,31 @@
 @charset "UTF-8";
 
 body {
-    font-family: "Poppins", serif;
-    font-weight: 400;
-    font-style: normal;
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
     background-color: #f4f6fc;
     color: #333;
     margin: 0;
     padding: 0;
-    overflow: hidden;
 }
 
 .container {
-    width: 600px;
-    max-height: 70vh;
-    margin: 4em auto;
+    width: 60%;
+    margin: 50px auto;
     background-color: #ffffff;
     border-radius: 8px;
-    padding: 2em;
+    padding: 20px;
     box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
-    overflow-y: auto;
 }
 
 h2 {
-    color: #0077B6;
+    color: #A0B1E1;
     font-size: 2em;
     text-align: center;
     margin-bottom: 20px;
 }
 
 h3 {
-    color: black;
+    color: #777;
     font-size: 1.2em;
     text-align: center;
     margin-bottom: 30px;
@@ -51,20 +46,20 @@ label {
 input[type="text"], input[type="date"], input[type="number"], select {
     padding: 10px;
     font-size: 1em;
-    border: 2px solid #023E8A;
+    border: 2px solid #A0B1E1;
     border-radius: 5px;
     outline: none;
     transition: border-color 0.3s ease-in-out;
 }
 
 input[type="text"]:focus, input[type="date"]:focus, input[type="number"]:focus, select:focus {
-    border-color: #48CAE4;
+    border-color: #4CAF50;
 }
 
 input[type="submit"] {
     padding: 12px;
     font-size: 1.1em;
-    background-color: #023E8A;
+    background-color: #A0B1E1;
     color: white;
     border: none;
     border-radius: 5px;
@@ -92,7 +87,7 @@ input[type="submit"]:disabled {
 input[type="text"], input[type="number"], select {
     font-size: 1em;
     padding: 10px;
-    border: 2px solid #023E8A;
+    border: 2px solid #A0B1E1;
     border-radius: 5px;
 }
 

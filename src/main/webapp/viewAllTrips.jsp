@@ -7,45 +7,9 @@
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>Your Trips</title>
-<link rel="stylesheet" href="CSS/viewAllTrips.css">
-
-<script>
-        function fetchTrips() {
-            fetch('/TravelPal/TripViewServlet', { method: 'POST' })
-                .then(response => {
-                    if (!response.ok) {
-                        throw new Error('Network response was not ok');
-                    }
-                    return response.text();
-                })
-                .then(html => {
-                    const tempDiv = document.createElement('div');
-                    tempDiv.innerHTML = html;
-
-                    const navbar = tempDiv.querySelector('.navbar');
-                    if (navbar) {
-                        navbar.remove();
-                    }
-
-                    const tripsContainer = document.getElementById('tripsContainer');
-                    tripsContainer.innerHTML = tempDiv.innerHTML;
-
-                    const tripSection = document.getElementById('tripSection');
-                    tripSection.style.display = 'block';
-                })
-                .catch(error => {
-                    console.error('Error fetching trips:', error);
-                });
-        }
-
-        window.onload = function() {
-            fetchTrips();
-        };
-    </script>
-    
+<link rel="stylesheet" href="CSS/dashboard.css">
 </head>
 <body>
-	<jsp:include page="navbar.jsp" />
 	<div class="container">
 		<h2>Your Trips</h2>
 		<%
@@ -152,6 +116,5 @@
 		}
 		%>
 	</div>
-	<jsp:include page="footer.jsp" />
 </body>
 </html>

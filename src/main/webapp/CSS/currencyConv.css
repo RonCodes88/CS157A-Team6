@@ -1,7 +1,5 @@
 body {
-    font-family: "Poppins", serif;
-    font-weight: 400;
-    font-style: normal;
+    font-family: Arial, sans-serif;
     background-color: #f4f4f4;
     margin: 0;
     padding: 0;
@@ -12,7 +10,10 @@ body {
 }
 
 .container {
-    background: #f4f4f4;
+    background: white;
+    border-radius: 8px;
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+    padding: 20px;
     width: 400px;
     text-align: center;
 }
@@ -33,7 +34,7 @@ input[type="number"],
 select {
     width: 100%;
     padding: 10px;
-    margin-bottom: 30px;
+    margin-bottom: 15px;
     border: 1px solid #ddd;
     border-radius: 4px;
     box-sizing: border-box;
@@ -42,23 +43,23 @@ select {
 
 input[type="number"]:focus,
 select:focus {
-    border-color: #023E8A;
+    border-color: #4CAF50;
     outline: none;
 }
 
 button {
-    background-color: #023E8A;
+    background-color: #4CAF50;
     color: white;
     border: none;
     padding: 10px 15px;
-    border-radius: 10px;
+    border-radius: 4px;
     cursor: pointer;
     transition: background-color 0.3s;
     font-size: 16px;
 }
 
 button:hover {
-    background-color: #023E8A;
+    background-color: #45a049;
 }
 
 #result {
