@@ -45,8 +45,20 @@ public class Hotel {
         this.hotelLink = hotelLink;
         this.image = image;
     }
+    
 
-    public int getHotelID() {
+    public Hotel(int hotelID2, String hotelName2, int price2, LocalDate checkInDate2, LocalDate checkOutDate2,
+			String roomType2, String specialRequests2) {
+		this.hotelID = hotelID2;
+		this.hotelName = hotelName2;
+		this.price = price2;
+		this.checkInDate = checkInDate2;
+		this.checkOutDate = checkOutDate2;
+		this.roomType = roomType2;
+		this.specialRequests = specialRequests2;
+	}
+
+	public int getHotelID() {
         return hotelID;
     }
 
