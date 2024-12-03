@@ -6,7 +6,6 @@
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <title>Edit Trip</title>
     <link rel="stylesheet" href="CSS/editTrip.css">
-    <link rel="stylesheet" href="CSS/style.css">
     <link href="https://fonts.googleapis.com/css?family=Ubuntu" rel="stylesheet">
 </head>
 
@@ -36,7 +35,21 @@
             <label for="endDate">End Date:</label>
             <input type="date" id="endDate" name="endDate" value="${trip.endDate}" required>
             
-            <input type="submit" value="Update Trip">
+            <%-- Edit hotels --%>
+			<label for="hotelName">Hotel Name:</label>
+            <input type="text" id="hotelName" name="hotelName" value="${hotel.hotelName}" required>
+            <label for="price">Price:</label>
+            <input type="number" id="Price" name="price" value="${hotel.price}" required>
+            <label for="checkInDate">Check-in Date:</label>
+            <input type="date" id="checkInDate" name="checkInDate" value="${hotel.checkInDate}" required>
+            <label for="checkOutDate">Check-out Date:</label>
+            <input type="date" id="checkOutDate" name="checkOutDate" value="${hotel.checkOutDate}" required>
+            <label for="roomType">Room Type:</label>
+            <input type="text" id="roomType" name="roomType" value="${hotel.roomType}" required>
+            <label for="specialRequests">Special Requests:</label>
+            <input type="text" id="specialRequests" name="specialRequests" value="${hotel.specialRequests}" required>
+            
+            <input type="submit" value="Update Trip">          
         </form>
 
         <div class="button-container">
