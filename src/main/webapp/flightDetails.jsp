@@ -34,7 +34,6 @@
     </script>
 </head>
 <body>
-	<jsp:include page="navbar.jsp" />
     <h2>Here are the available flights</h2>
 
     <%
@@ -176,7 +175,7 @@
 <%
     }
 %>
-<jsp:include page="footer.jsp" />
+
 </body>
 </html>
 

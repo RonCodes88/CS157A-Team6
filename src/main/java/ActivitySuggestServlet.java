@@ -74,3 +74,4 @@ public class ActivitySuggestServlet extends HttpServlet {
 	}
 
 }
+
