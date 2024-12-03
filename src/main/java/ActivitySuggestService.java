@@ -13,8 +13,6 @@ import org.json.JSONObject;
 public class ActivitySuggestService {
 	static String url = "https://generativelanguage.googleapis.com/v1beta/models/gemini-1.5-flash-latest:generateContent?key=";
 	static String apiKey = System.getenv("google_gemini_key");
-	
-	
 
 	public static List<Map<String, Object>> generateSuggestedActivities(String location)
 			throws IOException, InterruptedException {
@@ -48,59 +46,55 @@ public class ActivitySuggestService {
 	}
 
 	private static List<Map<String, Object>> parseActivities(String responseBody) {
-	    List<Map<String, Object>> activities = new ArrayList<>();
-	    JSONObject jsonResponse = new JSONObject(responseBody);
+		List<Map<String, Object>> activities = new ArrayList<>();
+		JSONObject jsonResponse = new JSONObject(responseBody);
 
-	    // Extract the candidates array
-	    JSONArray candidates = jsonResponse.getJSONArray("candidates");
-	    if (candidates.isEmpty()) {
-	        return activities; // Return empty list if no candidates
-	    }
+		// Extract the candidates array
+		JSONArray candidates = jsonResponse.getJSONArray("candidates");
+		if (candidates.isEmpty()) {
+			return activities; // Return empty list if no candidates
+		}
 
-	    // Extract the text from the first candidate's content.parts array
-	    JSONObject candidate = candidates.getJSONObject(0);
-	    JSONObject content = candidate.getJSONObject("content");
-	    JSONArray parts = content.getJSONArray("parts");
-	    if (parts.isEmpty()) {
-	        return activities; // Return empty list if no parts
-	    }
+		// Extract the text from the first candidate's content.parts array
+		JSONObject candidate = candidates.getJSONObject(0);
+		JSONObject content = candidate.getJSONObject("content");
+		JSONArray parts = content.getJSONArray("parts");
+		if (parts.isEmpty()) {
+			return activities; // Return empty list if no parts
+		}
 
-	    String generatedText = parts.getJSONObject(0).getString("text");
+		String generatedText = parts.getJSONObject(0).getString("text");
 
-	    // Strip the JSON block from the triple backticks and parse the JSON part
-	    String jsonText = generatedText.replace("```json", "").replace("```", "").trim();
+		// Strip the JSON block from the triple backticks and parse the JSON part
+		String jsonText = generatedText.replace("```json", "").replace("```", "").trim();
 
-	    // Parse the cleaned JSON string into an array of activities
-	    JSONArray activityArray = new JSONArray(jsonText);
+		// Parse the cleaned JSON string into an array of activities
+		JSONArray activityArray = new JSONArray(jsonText);
 
-	    // Loop through each activity and extract details
-	    for (int i = 0; i < activityArray.length(); i++) {
-	        JSONObject activity = activityArray.getJSONObject(i);
+		// Loop through each activity and extract details
+		for (int i = 0; i < activityArray.length(); i++) {
+			JSONObject activity = activityArray.getJSONObject(i);
 
-	        // Extract activity name, price, and description
-	        String name = activity.getString("Activity Name").trim();
-	        String priceString = activity.getString("Price");
-	        String description = activity.getString("Activity Description").trim();
+			// Extract activity name, price, and description
+			String name = activity.getString("Activity Name").trim();
+			String priceString = activity.getString("Price");
+			String description = activity.getString("Activity Description").trim();
 
-	        // Clean up price (remove non-numeric characters, e.g., "$")
-	        priceString = priceString.replaceAll("[^\\d]", ""); // Remove non-digit characters (including '$')
+			// Clean up price (remove non-numeric characters, e.g., "$")
+			priceString = priceString.replaceAll("[^\\d]", ""); // Remove non-digit characters (including '$')
 
-	        int price = 0;
-	        try {
-	            price = Integer.parseInt(priceString);
-	        } catch (NumberFormatException e) {
-	            // If parsing fails, use 0 as default
-	            price = 0;
-	        }
+			int price = 0;
+			try {
+				price = Integer.parseInt(priceString);
+			} catch (NumberFormatException e) {
+				// If parsing fails, use 0 as default
+				price = 0;
+			}
 
-	        // Add formatted activity to the list
-	        activities.add(Map.of(
-	                "activityName", name,
-	                "activityPrice", price,
-	                "activityDescription", description
-	        ));
-	    }
+			// Add formatted activity to the list
+			activities.add(Map.of("activityName", name, "activityPrice", price, "activityDescription", description));
+		}
 
-	    return activities;
+		return activities;
 	}
 }
