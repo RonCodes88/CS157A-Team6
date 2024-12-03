@@ -39,17 +39,19 @@
             <input type="submit" value="Update Trip">
         </form>
 
-        <form action="dashboard.jsp" method="get" style="display:inline-block;">
-            <input type="submit" value="Return to Dashboard" />
-        </form>
-        
-        <form action="TripDeleteServlet" method="get" style="display:inline-block;">
-		    <input type="hidden" name="tripID" value="${trip.tripID}" />
-		    <input type="submit" value="Delete Trip" onclick="return confirm('Are you sure you want to delete this trip?');" />
-		</form>
+        <div class="button-container">
+            <form action="viewAllTrips.jsp" method="get">
+                <input type="submit" value="Return to Trips" />
+            </form>
+            
+            <form action="TripDeleteServlet" method="get">
+                <input type="hidden" name="tripID" value="${trip.tripID}" />
+                <input type="submit" value="Delete Trip" onclick="return confirm('Are you sure you want to delete this trip?');" />
+            </form>
+        </div>
     </div>
     
-        <div class="wrapper">
+    <div class="wrapper">
         <div class="moving-car">
             <img src="images/Car.png" alt="Car">
         </div>
@@ -59,4 +61,5 @@
 	
 </body>
 </html>
+
 

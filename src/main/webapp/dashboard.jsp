@@ -29,7 +29,7 @@
             <video src="videos/hiking.mp4" autoplay muted loop></video>
             <div class="content">
                 <h1>Welcome<br><span><%= userEmail %>!</span></h1>
-                <p id="videoText">This is your adventure. Enjoy the ride!</p>
+                <p id="videoText"></p>
             </div>
             <div class="slider-nav">
                 <div class="navbtn active"></div>
