@@ -25,7 +25,6 @@ public class ActivityViewServlet extends HttpServlet {
 	 */
 	public ActivityViewServlet() {
 		super();
-		// TODO Auto-generated constructor stub
 	}
 
 	/**
@@ -36,6 +35,12 @@ public class ActivityViewServlet extends HttpServlet {
 			throws ServletException, IOException {
 		HttpSession session = request.getSession(false);
 		String userEmail = (session != null) ? (String) session.getAttribute("user") : null;
+		
+        if (userEmail == null) {
+            response.sendRedirect("login.jsp"); // Redirect to login if the user is not logged in
+            return;
+        }
+        
 
 		int tripId = Integer.parseInt(request.getParameter("tripID"));
 

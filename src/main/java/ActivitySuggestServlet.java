@@ -10,8 +10,11 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 
-@WebServlet("/ActivitySuggestServlet")
 
+/*
+ * Servlet implementation for ActivitySuggestServlet, connecting the createActivitySuggest.jsp and ActivityDao
+ */
+@WebServlet("/ActivitySuggestServlet")
 public class ActivitySuggestServlet extends HttpServlet {
 	/**
 	 * 
@@ -21,6 +24,8 @@ public class ActivitySuggestServlet extends HttpServlet {
 	@Override
 	protected void doPost(HttpServletRequest request, HttpServletResponse response)
 			throws ServletException, IOException {
+		
+		
 		int tripId = Integer.parseInt(request.getParameter("tripID"));
 
 		String activityName = request.getParameter("activityName");
