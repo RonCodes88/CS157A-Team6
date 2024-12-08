@@ -17,8 +17,6 @@ public class ActivitySuggestService {
 	public static List<Map<String, Object>> generateSuggestedActivities(String location)
 			throws IOException, InterruptedException {
 		HttpClient client = HttpClient.newHttpClient();
-
-		// Construct the JSON payload
 		String prompt = "Generate 9 travel activities for the location: " + location
 				+ ". Include activity name, description, and price (no range, with dollar sign symbol) for each activity. Return Json. Be concise. Please follow the format of-> Activity Name: Price: Activity Description:";
 		JSONObject content = new JSONObject().put("text", prompt);
@@ -33,15 +31,9 @@ public class ActivitySuggestService {
 		// Send the request and get the response
 		HttpResponse<String> response = client.send(request, HttpResponse.BodyHandlers.ofString());
 
-		// Log the raw response
-		System.out.println("Raw API Response:");
-		System.out.println(response.body());
-
 		if (response.statusCode() != 200) {
 			throw new IOException("Failed to fetch activities: " + response.body());
 		}
-
-		// Parse the response and return activities
 		return parseActivities(response.body());
 	}
 
@@ -52,7 +44,7 @@ public class ActivitySuggestService {
 		// Extract the candidates array
 		JSONArray candidates = jsonResponse.getJSONArray("candidates");
 		if (candidates.isEmpty()) {
-			return activities; // Return empty list if no candidates
+			return activities;
 		}
 
 		// Extract the text from the first candidate's content.parts array
@@ -60,12 +52,12 @@ public class ActivitySuggestService {
 		JSONObject content = candidate.getJSONObject("content");
 		JSONArray parts = content.getJSONArray("parts");
 		if (parts.isEmpty()) {
-			return activities; // Return empty list if no parts
+			return activities;
 		}
 
 		String generatedText = parts.getJSONObject(0).getString("text");
 
-		// Strip the JSON block from the triple backticks and parse the JSON part
+		// Strip the JSON block to parse JSON part
 		String jsonText = generatedText.replace("```json", "").replace("```", "").trim();
 
 		// Parse the cleaned JSON string into an array of activities
@@ -80,18 +72,16 @@ public class ActivitySuggestService {
 			String priceString = activity.getString("Price");
 			String description = activity.getString("Activity Description").trim();
 
-			// Clean up price (remove non-numeric characters, e.g., "$")
-			priceString = priceString.replaceAll("[^\\d]", ""); // Remove non-digit characters (including '$')
+			// Clean up price (remove non-numeric characters)
+			priceString = priceString.replaceAll("[^\\d]", "");
 
 			int price = 0;
 			try {
 				price = Integer.parseInt(priceString);
 			} catch (NumberFormatException e) {
-				// If parsing fails, use 0 as default
+				// If parsing fails, use 0
 				price = 0;
 			}
-
-			// Add formatted activity to the list
 			activities.add(Map.of("activityName", name, "activityPrice", price, "activityDescription", description));
 		}
 
